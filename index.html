@@ -20,6 +20,8 @@
     <title>Data4COVID19</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.typekit.net/kwv5eho.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@directus/sdk-js@5.3.4/dist/directus-sdk.umd.min.js"></script>
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
@@ -51,32 +53,15 @@
     <div class="divider">
         <h1>LIVING REPOSITORIES</h1>
     </div>
-    <div class="project-list">
-        <div class="project-item">
-            <a href="https://docs.google.com/document/d/1JWeD1AaIGKMPry_EN8GjIqwX4J4KLQIAqP09exZ-ENI/edit" target="_blank" class="project-card">
+    <div id="home-page" class="project-list">
+        <div v-for="topic in indexData" class="project-item">
+            <a :href="topic.url" target="_blank" class="project-card">
                 <div class="project-img">
-                <img src="img/repo-img.png">
+                <img :src="topic.thumbnail.data.full_url">
                 </div>
                 <div class="project-text small">
-                    <p id="title">#Data4COVID Data Collaborative Repository</p>
-                    <p>A collection of almost 300 data collaboratives, data
-                        competitions, requests for proposals, and other innovative public- and private-sector data work
-                        seeking to address the pandemic.</p>
-                </div>
-            </a>
-        </div>
-        <div class="project-item">
-            <a href="https://docs.google.com/document/d/1BdSnXzCZ1Z7ovOrPue3O0osRUpiqTKlu8pwG9U4DwWw/edit" target="_blank" class="project-card">
-                <div class="project-img">
-                <img src="img/oecd-img.png">
-                </div>
-                <div class="project-text small">
-                    <p id="title">OECD–GovLab Call for Evidence on the Use of Open Government Data</p>
-                    <p>A living collection, supported by
-                        the
-                        OECD Digital Government and Data Unit and The GovLab, of uses of open government data on issues
-                        related
-                        to COVID-19.</p>
+                    <p id="title">{{topic.title}}</p>
+                    <p>{{topic.description}}</p>
                 </div>
             </a>
         </div>
@@ -214,8 +199,8 @@
 </footer>
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-</script>
-<script src="scripts.js"></script>
+<script src='https://unpkg.com/vue@2.0.3/dist/vue.js'></script>
+<script src="https://unpkg.com/vue-meta/dist/vue-meta.min.js"></script>
+<script src="js/scripts.js"></script>
 
 </html>
