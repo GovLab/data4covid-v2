@@ -84,6 +84,9 @@
 
       </div>
     <div class="project-list">
+        <div class="no-project" v-if="!filterData.length">
+            Sorry no projects found for the filter criteria you selected!
+        </div>
         <div v-for="project in filterData" class="project-item">
             <a :href="project.url" target="_blank" class="project-card">
                 <div class="project-img">

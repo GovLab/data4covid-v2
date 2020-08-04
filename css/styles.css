@@ -430,6 +430,9 @@ img.project-img{
     color:var(--grey);
     font-weight:300;
     } 
+    .no-project{
+      padding: 4rem;
+    }
 p#title{
   text-transform: uppercase;
   font-weight:600;
