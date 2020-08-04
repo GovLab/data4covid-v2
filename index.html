@@ -84,14 +84,35 @@
 
       </div>
     <div class="project-list">
-        <div v-for="topic in filterData" class="project-item">
-            <a :href="topic.url" target="_blank" class="project-card">
+        <div v-for="project in filterData" class="project-item">
+            <a :href="project.url" target="_blank" class="project-card">
                 <div class="project-img">
-                <img :src="topic.thumbnail.data.full_url">
+                <img v-if="project.thumbnail" class="project-img" :src="project.thumbnail.data.full_url">
                 </div>
                 <div class="project-text small">
-                    <p id="title">{{topic.title}}</p>
-                    <p>{{topic.description}}</p>
+                    <p id="title">{{project.title}}</p>
+                    <div class="tag-section">
+                    <div class="tag-row">
+                    <div  class="tag-col" v-for="topics in project.project_type" v-if="topics">
+                        <p  v-if="topics == 'collabs'"><span class="tag dc-tag">Data Collaboratives</span></p>
+                        <p  v-if="topics == 'proposals-challenges'"><span class="tag dp-tag">Data Challenges and Calls for Proposals</span></p>
+                        <p  v-if="topics == 'requests'"><span class="tag de-tag">Requests for Data and Expertise</span></p>
+                    </div>
+                    </div>
+                    <div class="tag-row">
+                        <span id="location-icon" class="material-icons"> location_on</span>
+                        <div class="tag-col" v-for="regions in project.region" v-if="regions">
+                                <p v-if="regions == 'eca'"><span class="tag region-tag">Europe and Central Asia</span></p>
+                                <p v-if="regions == 'lac'"><span class="tag region-tag">Latin America and the Caribbean</span></p>
+                                <p v-if="regions == 'eap'"><span class="tag region-tag">East Asia and Pacific</span></p>
+                                <p v-if="regions == 'mena'"><span class="tag region-tag">Middle East and North Africa</span></p>
+                                <p v-if="regions == 'na'"><span class="tag region-tag">North America</span></p>
+                                <p v-if="regions == 'ssa'"><span class="tag region-tag">Sub-Saharan Africa</span></p>
+                                <p v-if="regions == 'global'"><span class="tag region-tag">Global</span></p>
+                            </div>
+                    </div>
+                    </div>
+                    <p>{{project.description}}</p>
                 </div>
             </a>
         </div>
