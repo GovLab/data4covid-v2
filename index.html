@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/kwv5eho.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/@directus/sdk-js@5.3.4/dist/directus-sdk.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
@@ -32,6 +33,7 @@
 </header>
 
 <body>
+    <div id="home-page">
     <div class="hero testing">
         <div class="text">
             <h1>#Data4COVID19</h1>
@@ -42,30 +44,7 @@
             </p>
         </div>
     </div>
-    <div class="cta-text testing">
-        <img src="img/covid-logo.png">
-        <p><a style="color: #ffffff; font-weight:400" href="https://medium.com/data-stewards-network/a-call-for-action-813669f32244">#Data4COVID19 Call for Action</a> is a roadmap explaining how organizations can use innovative data sources—such
-            as those derived through data collaboration—to address COVID-19 and future threats in a responsible,
-            systematic, and sustainable way. The Call for Action has been co-signed by almost 500 individuals. All of
-            the below projects are responses to the Call for Action.</p>
-    </div>
 
-    <div class="divider">
-        <h1>LIVING REPOSITORIES</h1>
-    </div>
-    <div id="home-page" class="project-list">
-        <div v-for="topic in indexData" class="project-item">
-            <a :href="topic.url" target="_blank" class="project-card">
-                <div class="project-img">
-                <img :src="topic.thumbnail.data.full_url">
-                </div>
-                <div class="project-text small">
-                    <p id="title">{{topic.title}}</p>
-                    <p>{{topic.description}}</p>
-                </div>
-            </a>
-        </div>
-    </div>
     <div class="divider projects">
         <h1>PROJECTS</h1>
     </div>
@@ -79,103 +58,46 @@
         <h1>Developing a Governance Framework</h1>
         <p>The Call for Action emphasizes that public actors, private actors, and civil society should work together to develop a governance framework for the trusted reuse of privately-held data toward the public interest.</p>
     </div>
-    <div class="project-list">
-        <div class="project-item">
-            <a href="http://thegovlab.org/wordpress/wp-content/uploads/2020/04/WORKING-DRAFT-4.20-C4DC-Questions-to-Consider.pdf" target="_blank" class="project-card">
-                <div class="project-img">
-                <img src="img/c4dc.png">
-                </div>
-                <div class="project-text">
-                    <p id="title">Contracts for Data Collaboration</p>
-                    <p> Understanding Public–Private Data Sharing Agreements: A living document meant to provide non-legal practitioners a better understanding of the key questions they need to address for fair, accountable, transparent, and functional data sharing agreements amid dynamic contexts such as COVID-19.</p>
-                </div>
-            </a>
+    <div class="filters">
+        <div class="form-control">
+        <select @change="changeFilter($event)">
+          <option class="material-icons" value="" selected disabled>Project Type</option> 
+          <option v-for="type in js_project_types" :value="type.code" :key="type.code">{{ type.name }}</option>
+        </select>
         </div>
-        <div class="project-item">
-            <a href="https://opendatapolicylab.org/" target="_blank" class="project-card">
-                <div class="project-img">
-                <img src="img/odpl.png">
-                </div>
-                <div class="project-text">
-                    <p id="title">Open Data Policy Lab</p>
-                    <p>A Microsoft-supported center to accelerate responsible re-use of data for the benefit of society on issues such as COVID-19 response. The initiative seeks to lower barriers to collaboration and build expertise among stakeholders.</p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="project-section" id="capacity">
-        <h1>Building Capacity for Data Demand</h1>
-        <p>The Call for Action emphasizes the importance of building organizational capacity to ask and formulate questions on the types of data use needed by the public.</p>
-    </div>
+        <p>&nbsp&nbsp&nbsp</p>
+        <div class="form-control">
+        <select  @change="changeFilter($event)">
+            <option value="" selected disabled>Region</option>
+            <option v-for="region in js_regions" :value="region.code" :key="region.code">{{ region.name }}</option>
+          </select>
+ 
+          </div>
+          <p>&nbsp&nbsp&nbsp</p>
+          <div class="form-control">
+          <select  @change="changeFilter($event)">
+            <option value="" selected disabled>Project Area</option>
+            <option v-for="area in js_areas" :value="area.code" :key="area.code">{{ area.name }}</option>
+          </select>
+  
+          </div>
+
+      </div>
     <div class="project-list">
-        <div class="project-item">
-            <a href="https://medium.com/data-policy/mapping-how-data-can-help-address-covid19-a7be2e631aec" target="_blank" class="project-card">
+        <div v-for="topic in filterData" class="project-item">
+            <a :href="topic.url" target="_blank" class="project-card">
                 <div class="project-img">
-                <img src="img/topics.png">
+                <img :src="topic.thumbnail.data.full_url">
                 </div>
                 <div class="project-text small">
-                    <p id="title">Data4COVID19 Topic Mapping</p>
-                    <p>An ongoing effort to identify the themes and priorities in COVID-19 response efforts and to find gaps in existing data-driven initiatives to address the effects of COVID-19.</p>
-                </div>
-            </a>
-        </div>
-        <div class="project-item">
-            <a href="https://medium.com/opendatacharter/open-covid-19-data-461e1cbefbba" target="_blank" class="project-card">
-                <div class="project-img">
-                <img src="img/data.png">
-                </div>
-                <div class="project-text small">
-                    <p id="title">Open COVID-19 Data</p>
-                    <p>A project undertaken with the Open Data Charter and others to identify high value open data in a pandemic using the Data4COVID19 Topic Mapping.</p>
+                    <p id="title">{{topic.title}}</p>
+                    <p>{{topic.description}}</p>
                 </div>
             </a>
         </div>
     </div>
-    <div class="project-section" id="stewards">
-        <h1>Establishing Data Stewardship and Building a Network</h1>
-        <p>The Call for Action encourages organizations to create and promote data stewards who can coordinate on and collaborate around data for the public good. </p>
-    </div>
-    <div class="project-list">
-        <div class="project-item center">
-            <a href="https://medium.com/data-stewards-network" target="_blank" class="project-card">
-                <div class="project-img">
-                <img src="img/stewards.png">
-                </div>
-                <div class="project-text">
-                    <p id="title">Data Stewards Network</p>
-                    <p>With support of the Rockefeller Foundation, we are building a network of responsible data leaders empowered by their organizations to proactively initiate, facilitate, and coordinate data collaboration in the public interest. Its work might be used to help them address coronavirus-related issues.</p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="project-section" id="people">
-        <h1>Engaging People </h1>
-        <p>The Call for Action suggests organizations engage the public in how their data will be responsibly used, re-used, and protected.</p>
-    </div>
-    <div class="project-list">
-        <div class="project-item">
-            <a href="https://thedataassembly.org/" target="_blank" class="project-card">
-                <div class="project-img">
-                <img src="img/assembly.png">
-                </div>
-                <div class="project-text small">
-                    <p id="title">The Data Assembly</p>
-                    <p>An initiative undertaken with support from the Henry Luce Foundation to solicit diverse, actionable public input on data re-use for crisis response on the pandemic and beyond in the United States</p>
-                </div>
-            </a>
-        </div>
-        <div class="project-item">
-            <a href="https://docs.google.com/document/d/1a3Jz8jI37tTaDXHg5vv5tpqvZ5ZCDdIKNwAKskqO2nI/edit#heading=h.w1advpbg0pvx" target="_blank" class="project-card">
-                <div class="project-img">
-                <img src="img/guide.png">
-                </div>
-                <div class="project-text small">
-                    <p id="title">Opening up data to meet local needs</p>
-                    <p>Guidance developed with the Open Data Charter on how to host open data meetups in virtual spaces amid the COVID-19 pandemic.</p>
-                </div>
-            </a>
-        </div>
-    </div>
+
+
     <div class="stay-connected">
         <h1>Stay Up to Date</h1>
         <p>Information on each of these project streams, as well information about upcoming coronavirus-related events, can be found in our weekly newsletter. Individuals interested in engaging with one or more of these strands can contact us at <a style="color:#ffffff;font-weight:400" href="mailto:stefaan@thegovlab.org">stefaan@thegovlab.org.</a>
@@ -197,6 +119,7 @@
         </p>
     </div>
 </footer>
+</div>
 </body>
 
 <script src='https://unpkg.com/vue@2.0.3/dist/vue.js'></script>

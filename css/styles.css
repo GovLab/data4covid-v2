@@ -7,8 +7,34 @@
   --grey10: #3d3d3d0a;
   --grey60: #3d3d3d3f;
   --white70: #ffffffb4;
+  --white40: #ffffff44;
   --white: #ffffff;
   font-size: 16px;
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 36px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+color: #ffffff;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
 }
 html, body {
   overflow-x: hidden;
@@ -174,6 +200,87 @@ color: var(--white);
   font-size: 1.5rem;
   line-height: 1.6;
 }
+.filters{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 8vh;
+  background-color: var(--grey);
+  padding: 0 6rem;
+}
+.form-control{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-width: 33.33%;
+width:33.33%;
+position: relative;
+overflow: hidden;
+padding: 10pt;
+background: var(--grey);
+overflow: hidden;
+border-radius: 0em;
+
+border: 1px solid var(--white40);
+}
+
+.form-control .material-icons:hover{
+cursor: pointer;
+}/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+select::-ms-expand {
+  display: none;
+}
+/* Arrow */
+.form-control::after {
+  position: absolute;
+  right:0;
+  font-family: "Material Icons";
+  content: "\e313";
+  font-size: 28px;
+  padding: 0 0;
+  color: #fff;
+  background: var(--grey);
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.form-control:hover::after {
+  color: #f39c12;
+}
+.filters select{
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 12pt;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 0;
+  background-color: var(--grey10);
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
 .divider{
   height:10vh;
   background-color: var(--grey10);
@@ -263,15 +370,24 @@ color:var(--white70);
 .project-list{
   display:flex;
   flex-direction: row;
-  padding: 2rem 12rem;
+  display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+-webkit-flex-flow: row wrap;
+-ms-flex-flow: row wrap;
+flex-flow: row wrap;
+  
 }
 .project-item{
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  padding:0 2rem;
+  -webkit-flex: 0 0 33.33%;
+  -ms-flex: 0 0 33.33%;
+  flex: 0 0 33.33%;
+  max-width: 33.33%;
+  padding:3rem 0 0 0rem;
 }
 a.project-card{
   text-decoration: none;
@@ -375,9 +491,10 @@ footer{
   .mod-video .row{
     height: 600px;
   }
+  
 
 }
-@media screen and (min-width: 801px) and (max-width: 1200px){
+@media screen and (min-width: 769px) and (max-width: 1200px){
   .gl-header{
     padding:0 4rem;
     justify-content: center;
@@ -414,11 +531,15 @@ footer{
     padding: 3rem 1rem;
   }
 .project-list{
-  padding: 2rem 2rem;
+
 }
   .project-item{
-    margin-top:20px;
+    -webkit-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
   }
+
   .stay-connected{
     padding: 2rem 1rem;
   }
@@ -432,7 +553,7 @@ footer{
 
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 768px){
   .hero.testing{
     flex-direction: column;
     text-align:center;
@@ -505,14 +626,24 @@ footer{
     padding: 3rem 1rem;
   }
   .project-list{
-    flex-direction: column;
-    padding: 0 2rem;
+    display: flex;
+    flex-direction: column ;
+    max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column wrap;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
   }
-  .project-item{
-    margin-top:20px;
-    width:100%;
-    padding: 0 0;
-  }
+    .project-item{
+      -webkit-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
   .stay-connected{
     padding: 2rem 1rem;
   }
