@@ -92,43 +92,52 @@ new Vue({
 })
 .catch(error => console.error(error));
     },
+    dateShow(date) {
+      return moment(date).format("MMMM YYYY");
+    },
+    searchItems(){
+
+      squery = document.getElementById('search-text').value;
+      let searchData = self.indexData.filter(items => items.title.toLowerCase().includes(squery.toLowerCase()));
+      self.filterData =  searchData;
+    },
+    ResetItems(){
+      self.filterData =  self.indexData;
+    },
     changeFilter (event) {
       var element = document.body.querySelectorAll("select");
-      console.log(element[0].value);
-      console.log(element[1].value);
       this.selectedProjectType = element[0].value;
       this.selectedRegion = element[1].value;
+      this.selectedArea = element[2].value;
+      //Project Type Filter
       if (this.selectedProjectType == '')
-      self.filtered_pt = self.indexData;
+        self.filtered_pt = self.indexData;
       else{
-      let filtered_by_project_type = self.indexData.filter(function (e) {
-        console.log(e.project_type);
-        console.log(self.selectedProjectType);
-        console.log(e.project_type.some(pt_element => pt_element == self.selectedProjectType));
-        return e.project_type.some(pt_element => pt_element == self.selectedProjectType);
-    }
-    );
-    self.filtered_pt=filtered_by_project_type;
-    
-  }
-  if (this.selectedRegion == '')
-  self.filtered_region = self.filtered_pt;
-  else{
-    let filtered_by_region= self.filtered_pt.filter(function (e) {
-      console.log(e.region);
-      console.log(self.selectedRegion);
-      console.log(e.region.some(reg_element => reg_element == self.selectedRegion));
-      return e.region.some(reg_element => reg_element == self.selectedRegion);
-  }
-  
-  );
-  
-  self.filtered_region = filtered_by_region ;
-
-  }
-  self.filterData =  self.filtered_region;
-    }
-}
-});
+        let filtered_by_project_type = self.indexData.filter(function (e) {
+          return e.project_type.some(pt_element => pt_element == self.selectedProjectType);
+        });
+        self.filtered_pt=filtered_by_project_type;
+      }
+      //Region Filter
+      if (this.selectedRegion == '')
+        self.filtered_region = self.filtered_pt;
+      else{
+        let filtered_by_region= self.filtered_pt.filter(function (e) {
+          return e.region.some(reg_element => reg_element == self.selectedRegion);
+        });
+        self.filtered_region = filtered_by_region ;
+      }
+       //Topic Area Filter
+      if (this.selectedArea == '')
+        self.filtered_area = self.filtered_region;
+      else{
+        let filtered_by_area= self.filtered_region.filter(function (e) {
+          return e.topic_areas.some(are_element => are_element == self.selectedArea);
+        });
+        self.filtered_area = filtered_by_area ;
+      }
+      self.filterData =  self.filtered_area;
+      }
+}});
 
 

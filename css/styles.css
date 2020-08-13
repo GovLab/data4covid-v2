@@ -11,7 +11,7 @@
   --white70: #ffffffb4;
   --white40: #ffffff44;
   --white: #ffffff;
-  font-size: 16px;
+  font-size: 14px;
 }
 .material-icons {
   font-family: 'Material Icons';
@@ -223,8 +223,7 @@ overflow: hidden;
 padding: 10pt;
 background: var(--grey);
 overflow: hidden;
-border-radius: 0em;
-
+border-radius: 5px;
 border: 1px solid var(--white40);
 }
 
@@ -259,6 +258,7 @@ select::-ms-expand {
   -webkit-transition: .25s all ease;
   -o-transition: .25s all ease;
   transition: .25s all ease;
+ 
 }
 /* Transition */
 .form-control:hover::after {
@@ -281,7 +281,33 @@ select::-ms-expand {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
+.search{
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0;
+  background-color: var(--purple);
+}
+input[type=text] {
+  border: 2px solid var(--white70);
+  border-radius: 4px;
+  height: 20px;
+  width: 20%;
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: var(--white40);
+  border: none;
+  color: white;
+  padding: 7px 32px;
+  text-decoration: none;
+  margin: 0px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+  background-color: var(--grey);
+  transition: all .6s ease;
+}
 
 .divider{
   height:10vh;
@@ -403,40 +429,45 @@ a.project-card:hover .project-text{
 width:100%;
 }
 .project-card{
-  width:420px;
+  width:380px;
 }
 .project-card .project-img img{
-  width: 420px;
+  width: 380px;
 }
 img.project-img{
   object-fit: cover;
-  width: 420px;
+  width: 380px;
   height: 150px;
+  border-radius: 20px  20px 0px 0px;
 }
 .project-card .project-text{
   margin-top: -10px;
   background-color: var(--grey10);
   padding: 20px;
-  height: 400px;
+  height: 300px;
+  border-radius: 0  0 20px 20px;
 
   }
   .project-card .project-text.small{
-
     height: 300px;
   
     }
   .project-card .project-text p{
-    margin:0;
+    margin:0 0 5px 0;
     color:var(--grey);
     font-weight:300;
     } 
+    #date{
+      font-weight:600;
+      color: #3d3d3dc4;
+    }
     .no-project{
       padding: 4rem;
     }
 p#title{
-  text-transform: uppercase;
+ 
   font-weight:600;
-  margin-bottom:0px;
+  margin-bottom:0.25rem 0 0 0;
   color:var(--grey);
 }
 .tag-section{
@@ -455,6 +486,7 @@ display: flex;
 flex-flow: row wrap;
 justify-content: left;
 align-items: center;
+margin: 0.25rem 0;
 }
 .tag-col{
   display:flex;
@@ -467,12 +499,13 @@ align-items: center;
 }
 .tag-row p{
   padding:0.25rem 0.1rem;
-  font-size: 10pt;
+  font-size: 8pt;
 }
 .tag{
   color: #ffffff;
   padding: 3px 2px;
   font-weight: 500;
+  border-radius: 5px;
 }
 .tag-section{
   padding: 0.5rem 0;
@@ -492,7 +525,7 @@ align-items: center;
   padding: 3px;
 }
 #location-icon{
-  font-size: 14pt;
+  font-size: 16pt;
   color: var(--grey);
 }
 .stay-connected{

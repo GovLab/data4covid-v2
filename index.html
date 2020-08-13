@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="https://use.typekit.net/kwv5eho.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/@directus/sdk-js@5.3.4/dist/directus-sdk.umd.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -45,19 +47,6 @@
         </div>
     </div>
 
-    <div class="divider projects">
-        <h1>PROJECTS</h1>
-    </div>
-    <div class="main-button">
-        <a class="btn project" href="#framework">Developing a <br> Governance Framework</a>
-        <a class="btn project" href="#capacity">Building Capacity for <br> Data Demand</a>
-        <a class="btn project" href="#stewards">Establishing Data Stewardship <br> and Building a Network</a>
-        <a class="btn project last" href="#people">Engaging<br>People</a>
-    </div>
-    <div class="project-section first" id="framework">
-        <h1>Developing a Governance Framework</h1>
-        <p>The Call for Action emphasizes that public actors, private actors, and civil society should work together to develop a governance framework for the trusted reuse of privately-held data toward the public interest.</p>
-    </div>
     <div class="filters">
         <div class="form-control">
         <select @change="changeFilter($event)">
@@ -81,7 +70,11 @@
           </select>
   
           </div>
-
+      </div>
+      <div class="search">
+        <input name="search-bar" type="text" id="search-text"/>
+        <input name="buttonExecute" @click="searchItems()" type="button" value="Search" />
+        <input name="buttonExecute" @click="ResetItems()" type="button" value="Reset" />
       </div>
     <div class="project-list">
         <div class="no-project" v-if="!filterData.length">
@@ -94,8 +87,11 @@
                 </div>
                 <div class="project-text small">
                     <p id="title">{{project.title}}</p>
+                    <p id="date">{{dateShow(project.project_initiation_date)}}</p>
+                    <p id="desc">{{project.description}}</p>
                     <div class="tag-section">
                     <div class="tag-row">
+                        <span id="location-icon" class="material-icons"> local_offer</span>
                     <div  class="tag-col" v-for="topics in project.project_type" v-if="topics">
                         <p  v-if="topics == 'collabs'"><span class="tag dc-tag">Data Collaboratives</span></p>
                         <p  v-if="topics == 'proposals-challenges'"><span class="tag dp-tag">Data Challenges and Calls for Proposals</span></p>
@@ -115,7 +111,7 @@
                             </div>
                     </div>
                     </div>
-                    <p>{{project.description}}</p>
+                    
                 </div>
             </a>
         </div>
