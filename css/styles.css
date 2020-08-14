@@ -626,6 +626,9 @@ header.project-header{
     padding: 2rem 12rem;
     height: 30vh;
     background-color: var(--purple);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .project-page-section p{
     color: var(--white70);
