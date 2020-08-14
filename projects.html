@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
+        Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
+        University of Washington, and others—to identify, collect, and analyze the value data can provide to the
+        ongoing COVID-19 pandemic" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Data4COVID19" />
+    <meta property="og:description"
+        content="#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
+        Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
+        University of Washington, and others—to identify, collect, and analyze the value data can provide to the
+        ongoing COVID-19 pandemic" />
+    <meta property="og:image" content="img/covid-logo-color.png" />
+    <title>Data4COVID19</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/kwv5eho.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/@directus/sdk-js@5.3.4/dist/directus-sdk.umd.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<header class="project-header">
+    <a class="govlab-logo" href="index.html">
+        <img src="img/govlab-logo-white.png" alt="The GovLab">
+    </a>
+</header>
+
+<body>
+    <div id="project-page">
+
+    <div class="project-header-row">
+        <div class="project-header-col col-20":style="{ backgroundImage: 'url(' + filterData[0].thumbnail.data.full_url+ ')' }">
+            
+        </div>
+        <div class="project-header-col col-80">
+            <h1>{{filterData[0].title}}</h1>
+            <p id="date">{{dateShow(filterData[0].project_initiation_date)}}</p>
+            <p>{{filterData[0].description}}</p>
+            <div class="tag-section">
+                <div class="tag-row">
+                    <span id="location-icon" class="material-icons"> local_offer</span>
+                <div  class="tag-col" v-for="topics in filterData[0].project_type" v-if="topics">
+                    <p  v-if="topics == 'collabs'"><span class="tag dc-tag">Data Collaboratives</span></p>
+                    <p  v-if="topics == 'proposals-challenges'"><span class="tag dp-tag">Data Challenges and Calls for Proposals</span></p>
+                    <p  v-if="topics == 'requests'"><span class="tag de-tag">Requests for Data and Expertise</span></p>
+                </div>
+                </div>
+                <div class="tag-row">
+                    <span id="location-icon" class="material-icons"> location_on</span>
+                    <div class="tag-col" v-for="regions in filterData[0].region" v-if="regions">
+                            <p v-if="regions == 'eca'"><span class="tag region-tag">Europe and Central Asia</span></p>
+                            <p v-if="regions == 'lac'"><span class="tag region-tag">Latin America and the Caribbean</span></p>
+                            <p v-if="regions == 'eap'"><span class="tag region-tag">East Asia and Pacific</span></p>
+                            <p v-if="regions == 'mena'"><span class="tag region-tag">Middle East and North Africa</span></p>
+                            <p v-if="regions == 'na'"><span class="tag region-tag">North America</span></p>
+                            <p v-if="regions == 'ssa'"><span class="tag region-tag">Sub-Saharan Africa</span></p>
+                            <p v-if="regions == 'global'"><span class="tag region-tag">Global</span></p>
+                        </div>
+                </div>
+                </div>
+               
+        </div>
+    </div>
+    <div class="project-page-section">
+        <p> {{filterData[0].long_description}}</p>
+    </div>
+    
+
+
+
+    <div class="stay-connected">
+        <h1>Stay Up to Date</h1>
+        <p>Information on each of these project streams, as well information about upcoming coronavirus-related events, can be found in our weekly newsletter. Individuals interested in engaging with one or more of these strands can contact us at <a style="color:#ffffff;font-weight:400" href="mailto:stefaan@thegovlab.org">stefaan@thegovlab.org.</a>
+        <br>If these projects interest you, you might also be interested in The GovLab’s <a style="color:#ffffff; font-weight:400" href="https://covidcourse.thegovlab.org">Covid Course</a>, a collective intelligence course which aims to improve responses to COVID-19.</p>
+    </div>
+<footer>
+    <div class="logo-side">
+        <img src="img/govlab-logo-white.png">
+        <p>The Governance Lab's mission is to improve people's lives by changing the way we govern. Our goal at The GovLab is to strengthen the ability of institutions — including but not limited to governments — and people to work more openly, collaboratively, effectively, and legitimately to make better decisions and solve public problems. We believe that increased availability and use of data, new ways to leverage the capacity, intelligence, and expertise of people in the problem-solving process, combined with new advances in technology and science, can transform governance. We approach each challenge and opportunity in an interdisciplinary, collaborative way, irrespective of the problem, sector, geography, and level of government. For more information, visit thegovlab.org.</p>
+    </div>
+    <div class="address">
+    <h4>CONTACT US</h4>
+    <p>The GovLab<br>
+        NYU Tandon School of Engineering<br>
+        2 MetroTech Center, 9th Floor<br>
+        Brooklyn, NY 11201<br>
+        (646) 997-3150<br>
+         info@thegovlab.org
+        </p>
+    </div>
+</footer>
+</div>
+</body>
+
+<script src='https://unpkg.com/vue@2.0.3/dist/vue.js'></script>
+<script src="https://unpkg.com/vue-meta/dist/vue-meta.min.js"></script>
+<script src="js/project.js"></script>
+
+</html>

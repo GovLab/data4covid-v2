@@ -67,12 +67,14 @@ new Vue({
   },
 
   created: function created() {
+    this.memberslug=window.location.pathname.split('/');
     this.fetchIndex();
 
   },
   methods: {
 
     fetchIndex() {
+      
       self = this;
       const client = new DirectusSDK({
         url: "https://directus.thegovlab.com/",

@@ -5,8 +5,10 @@
   --yellow-dark: #f5a700;
   --green: #43AA8B;
   --blue: #087ca7;
+  --dark-grey: #2c2b2b;
   --grey: #3D3D3D;
   --grey10: #3d3d3d0a;
+  --grey20: #3d3d3d25;
   --grey60: #3d3d3d3f;
   --white70: #ffffffb4;
   --white40: #ffffff44;
@@ -76,7 +78,6 @@ body {
 }
 
 .hero{
-  background-image: url("../img/hero.jpg");
   height: 50vh;
   display: flex;
   flex-direction: row;
@@ -88,6 +89,9 @@ body {
   background-color: var(--purple); 
   background-size: cover;
   background-position: center top;
+}
+.hero-banner{
+  background-image: url("../img/hero.jpg");
 }
 .hero.testing{
   flex-direction: column;
@@ -497,10 +501,6 @@ margin: 0.25rem 0;
   flex: 0 1 auto;
   max-width: 70%;
 }
-.tag-row p{
-  padding:0.25rem 0.1rem;
-  font-size: 8pt;
-}
 .tag{
   color: #ffffff;
   padding: 3px 2px;
@@ -528,6 +528,7 @@ margin: 0.25rem 0;
   font-size: 16pt;
   color: var(--grey);
 }
+
 .stay-connected{
   display:flex;
   flex-direction: column;
@@ -584,6 +585,87 @@ footer{
 .address p{
   margin:0;
 }
+#project-page .hero.testing{
+padding: 0 16rem;
+}
+#project-page .hero.testing #date{
+  color: var(--white70);
+  }
+header.project-header{
+  background-color: var(--dark-grey);
+}
+
+  .project-header-row{
+    display:flex;
+    flex-direction: row;  
+    height: 50vh;
+  }
+  .project-header-col{
+    display:flex;
+    flex-direction: column;
+    color: #ffffff;
+    justify-content: center;
+ 
+  }
+  .project-header-col #date{
+    margin: 1rem 2rem;
+    color: var(--grey);
+  }
+  .project-page-img{
+    width: 250px;
+  }
+ 
+  .project-header-col h1{
+    margin: 0 2rem;
+    font-weight: 200;
+  }
+  .project-header-col p{
+    margin: 0rem 2rem 1rem 2rem;
+  }
+  .project-page-section{
+    padding: 2rem 12rem;
+    height: 30vh;
+    background-color: var(--purple);
+  }
+  .project-page-section p{
+    color: var(--white70);
+    font-size: 14pt;
+    font-weight: 200;
+  }
+  .col-20{
+    width: 50%;
+    height: 50vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .col-80{
+    padding: 1rem;
+    width: 50%;
+    color: var(--grey);
+  }
+  #project-page .tag-col{
+    max-width: 100%;
+  }
+  .tag-row p{
+    padding:0.25rem 0.1rem;
+    font-size: 8pt;
+  }
+  #project-page .tag-row p{
+    margin: 0 2rem;
+    padding:0rem 0rem;
+    font-size: 10pt;
+  }
+  #project-page #location-icon{
+    margin: 0 0rem 0 2rem;
+    font-size: 16pt;
+    color: var(--grey);
+  }
+  #project-page .region-tag{
+    background-color:var(--grey60);
+    color: var(--grey);
+  }
+
 @media screen and (min-width: 1401px){
   .mod-video .row{
     height: 600px;
