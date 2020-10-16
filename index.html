@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
+    <meta name="description" content="#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
         Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
         University of Washington, and others—to identify, collect, and analyze the value data can provide to the
         ongoing COVID-19 pandemic" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Data4COVID19" />
-    <meta property="og:description"
-        content="#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
+    <meta property="og:description" content="#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
         Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
         University of Washington, and others—to identify, collect, and analyze the value data can provide to the
         ongoing COVID-19 pandemic" />
@@ -36,110 +34,139 @@
 
 <body>
     <div id="home-page">
-    <div class="hero testing hero-banner">
-        <div class="text">
-            <h1>#Data4COVID19</h1>
-            <p>#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open Data
-                Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
-                University of Washington, and others—to identify, collect, and analyze the value data can provide to the
-                ongoing COVID-19 pandemic.
-            </p>
+        <div class="hero testing hero-banner">
+            <div class="text">
+                <h1>#Data4COVID19</h1>
+                <p>#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open
+                    Data
+                    Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
+                    University of Washington, and others—to identify, collect, and analyze the value data can provide to
+                    the
+                    ongoing COVID-19 pandemic.
+                </p>
+            </div>
         </div>
-    </div>
 
-    <div class="filters">
-        <div class="form-control">
-        <select @change="changeFilter($event)">
-          <option class="material-icons" value="" selected disabled>Project Type</option> 
-          <option v-for="type in js_project_types" :value="type.code" :key="type.code">{{ type.name }}</option>
-        </select>
+        <div class="filters">
+            <div class="form-control">
+                <select @change="changeFilter($event)">
+                    <option class="material-icons" value="" selected disabled>Project Type</option>
+                    <option v-for="type in js_project_types" :value="type.code" :key="type.code">{{ type.name }}
+                    </option>
+                </select>
+            </div>
+            <p>&nbsp&nbsp&nbsp</p>
+            <div class="form-control">
+                <select @change="changeFilter($event)">
+                    <option value="" selected disabled>Region</option>
+                    <option v-for="region in js_regions" :value="region.code" :key="region.code">{{ region.name }}
+                    </option>
+                </select>
+
+            </div>
+            <p>&nbsp&nbsp&nbsp</p>
+            <div class="form-control">
+                <select @change="changeFilter($event)">
+                    <option value="" selected disabled>Project Area</option>
+                    <option v-for="area in js_areas" :value="area.code" :key="area.code">{{ area.name }}</option>
+                </select>
+
+            </div>
+
         </div>
-        <p>&nbsp&nbsp&nbsp</p>
-        <div class="form-control">
-        <select  @change="changeFilter($event)">
-            <option value="" selected disabled>Region</option>
-            <option v-for="region in js_regions" :value="region.code" :key="region.code">{{ region.name }}</option>
-          </select>
- 
-          </div>
-          <p>&nbsp&nbsp&nbsp</p>
-          <div class="form-control">
-          <select  @change="changeFilter($event)">
-            <option value="" selected disabled>Project Area</option>
-            <option v-for="area in js_areas" :value="area.code" :key="area.code">{{ area.name }}</option>
-          </select>
-  
-          </div>
-      </div>
-      <div class="search">
-        <input name="search-bar" type="text" id="search-text"/>
-        <input name="buttonExecute" @click="searchItems()" type="button" value="Search" />
-        <input name="buttonExecute" @click="ResetItems()" type="button" value="Reset" />
-      </div>
-    <div class="project-list">
-        <div class="no-project" v-if="!filterData.length">
-            Sorry no projects found for the filter criteria you selected!
+        <div class="search">
+            <input name="search-bar" type="text" id="search-text" />
+            <input name="buttonExecute" @click="searchItems()" type="button" value="Search" />
+            <input name="buttonExecute" @click="ResetItems()" type="button" value="Reset" />
         </div>
-        <div v-for="project in filterData" class="project-item">
-            <a :href="'https://govlab.github.io/data4covid-v2/projects.html?' + project.slug" class="project-card">
-                <div class="project-img">
-                <img v-if="project.thumbnail" class="project-img" :src="project.thumbnail.data.full_url">
-                </div>
-                <div class="project-text small">
-                    <p id="title">{{project.title}}</p>
-                    <p id="date">{{dateShow(project.project_initiation_date)}}</p>
-                    <p id="desc">{{project.description}}</p>
-                    <div class="tag-section">
-                    <div class="tag-row">
-                        <span id="location-icon" class="material-icons"> local_offer</span>
-                    <div  class="tag-col" v-for="topics in project.project_type" v-if="topics">
-                        <p  v-if="topics == 'collabs'"><span class="tag dc-tag">Data Collaboratives</span></p>
-                        <p  v-if="topics == 'proposals-challenges'"><span class="tag dp-tag">Data Challenges and Calls for Proposals</span></p>
-                        <p  v-if="topics == 'requests'"><span class="tag de-tag">Requests for Data and Expertise</span></p>
+        <div class="project-list">
+            <div class="no-project" v-if="!filterData.length">
+                Sorry no projects found for the filter criteria you selected!
+            </div>
+            <div v-for="project in filterData" class="project-item">
+                <a :href="'https://govlab.github.io/data4covid-v2/projects.html?' + project.slug" class="project-card">
+                    <div class="project-img">
+                        <img v-if="project.thumbnail" class="project-img" :src="project.thumbnail.data.full_url">
                     </div>
-                    </div>
-                    <div class="tag-row">
-                        <span id="location-icon" class="material-icons"> location_on</span>
-                        <div class="tag-col" v-for="regions in project.region" v-if="regions">
-                                <p v-if="regions == 'eca'"><span class="tag region-tag">Europe and Central Asia</span></p>
-                                <p v-if="regions == 'lac'"><span class="tag region-tag">Latin America and the Caribbean</span></p>
-                                <p v-if="regions == 'eap'"><span class="tag region-tag">East Asia and Pacific</span></p>
-                                <p v-if="regions == 'mena'"><span class="tag region-tag">Middle East and North Africa</span></p>
-                                <p v-if="regions == 'na'"><span class="tag region-tag">North America</span></p>
-                                <p v-if="regions == 'ssa'"><span class="tag region-tag">Sub-Saharan Africa</span></p>
-                                <p v-if="regions == 'global'"><span class="tag region-tag">Global</span></p>
+                    <div class="project-text small">
+                        <p id="title">{{project.title}}</p>
+                        <p id="date">{{dateShow(project.project_initiation_date)}}</p>
+                        <p id="desc">{{project.description}}</p>
+                        <div class="tag-section">
+                            <div class="tag-row">
+                                <span id="location-icon" class="material-icons"> local_offer</span>
+                                <div class="tag-col" v-for="topics in project.project_type" v-if="topics">
+                                    <p v-if="topics == 'collabs'"><span class="tag dc-tag">Data Collaboratives</span>
+                                    </p>
+                                    <p v-if="topics == 'proposals-challenges'"><span class="tag dp-tag">Data Challenges
+                                            and Calls for Proposals</span></p>
+                                    <p v-if="topics == 'requests'"><span class="tag de-tag">Requests for Data and
+                                            Expertise</span></p>
+                                </div>
                             </div>
+                            <div class="tag-row">
+                                <span id="location-icon" class="material-icons"> location_on</span>
+                                <div class="tag-col" v-for="regions in project.region" v-if="regions">
+                                    <p v-if="regions == 'eca'"><span class="tag region-tag">Europe and Central
+                                            Asia</span></p>
+                                    <p v-if="regions == 'lac'"><span class="tag region-tag">Latin America and the
+                                            Caribbean</span></p>
+                                    <p v-if="regions == 'eap'"><span class="tag region-tag">East Asia and Pacific</span>
+                                    </p>
+                                    <p v-if="regions == 'mena'"><span class="tag region-tag">Middle East and North
+                                            Africa</span></p>
+                                    <p v-if="regions == 'na'"><span class="tag region-tag">North America</span></p>
+                                    <p v-if="regions == 'ssa'"><span class="tag region-tag">Sub-Saharan Africa</span>
+                                    </p>
+                                    <p v-if="regions == 'global'"><span class="tag region-tag">Global</span></p>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
                     </div>
-                    </div>
-                    
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
-    </div>
 
 
-    <div class="stay-connected">
-        <h1>Stay Up to Date</h1>
-        <p>Information on each of these project streams, as well information about upcoming coronavirus-related events, can be found in our weekly newsletter. Individuals interested in engaging with one or more of these strands can contact us at <a style="color:#ffffff;font-weight:400" href="mailto:stefaan@thegovlab.org">stefaan@thegovlab.org.</a>
-        <br>If these projects interest you, you might also be interested in The GovLab’s <a style="color:#ffffff; font-weight:400" href="https://covidcourse.thegovlab.org">Covid Course</a>, a collective intelligence course which aims to improve responses to COVID-19.</p>
+        <div class="stay-connected">
+            <h1>Stay Up to Date</h1>
+            <p>Information on each of these project streams, as well information about upcoming coronavirus-related
+                events, can be found in our weekly newsletter. Individuals interested in engaging with one or more of
+                these strands can contact us at <a style="color:#ffffff;font-weight:400"
+                    href="mailto:stefaan@thegovlab.org">stefaan@thegovlab.org.</a>
+                <br>If these projects interest you, you might also be interested in The GovLab’s <a
+                    style="color:#ffffff; font-weight:400" href="https://covidcourse.thegovlab.org">Covid Course</a>, a
+                collective intelligence course which aims to improve responses to COVID-19.</p>
+        </div>
+        <footer>
+            <div class="logo-side">
+                <img src="img/govlab-logo-white.png">
+                <p>The Governance Lab's mission is to improve people's lives by changing the way we govern. Our goal at
+                    The GovLab is to strengthen the ability of institutions — including but not limited to governments —
+                    and people to work more openly, collaboratively, effectively, and legitimately to make better
+                    decisions and solve public problems. We believe that increased availability and use of data, new
+                    ways to leverage the capacity, intelligence, and expertise of people in the problem-solving process,
+                    combined with new advances in technology and science, can transform governance. We approach each
+                    challenge and opportunity in an interdisciplinary, collaborative way, irrespective of the problem,
+                    sector, geography, and level of government. For more information, visit thegovlab.org.</p>
+            </div>
+            <div class="address">
+                <h4>CONTACT US</h4>
+                <p>The GovLab<br>
+                    NYU Tandon School of Engineering<br>
+                    2 MetroTech Center, 9th Floor<br>
+                    Brooklyn, NY 11201<br>
+                    (646) 997-3150<br>
+                    info@thegovlab.org
+                </p>
+            </div>
+        </footer>
     </div>
-<footer>
-    <div class="logo-side">
-        <img src="img/govlab-logo-white.png">
-        <p>The Governance Lab's mission is to improve people's lives by changing the way we govern. Our goal at The GovLab is to strengthen the ability of institutions — including but not limited to governments — and people to work more openly, collaboratively, effectively, and legitimately to make better decisions and solve public problems. We believe that increased availability and use of data, new ways to leverage the capacity, intelligence, and expertise of people in the problem-solving process, combined with new advances in technology and science, can transform governance. We approach each challenge and opportunity in an interdisciplinary, collaborative way, irrespective of the problem, sector, geography, and level of government. For more information, visit thegovlab.org.</p>
-    </div>
-    <div class="address">
-    <h4>CONTACT US</h4>
-    <p>The GovLab<br>
-        NYU Tandon School of Engineering<br>
-        2 MetroTech Center, 9th Floor<br>
-        Brooklyn, NY 11201<br>
-        (646) 997-3150<br>
-         info@thegovlab.org
-        </p>
-    </div>
-</footer>
-</div>
 </body>
 
 <script src='https://unpkg.com/vue@2.0.3/dist/vue.js'></script>
