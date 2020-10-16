@@ -50,8 +50,8 @@
         <div class="filters">
             <div class="form-control">
                 <select @change="changeFilter($event)">
-                    <option class="material-icons" value="" selected disabled>Project Type</option>
-                    <option v-for="type in js_project_types" :value="type.code" :key="type.code">{{ type.name }}
+                    <option class="material-icons" value="" selected disabled>Scope</option>
+                    <option v-for="scope in js_scope" :value="scope.code" :key="scope.code">{{ scope.name }}
                     </option>
                 </select>
             </div>
@@ -67,12 +67,18 @@
             <p>&nbsp&nbsp&nbsp</p>
             <div class="form-control">
                 <select @change="changeFilter($event)">
-                    <option value="" selected disabled>Project Area</option>
-                    <option v-for="area in js_areas" :value="area.code" :key="area.code">{{ area.name }}</option>
+                    <option value="" selected disabled>Topic</option>
+                    <option v-for="topic in js_topic" :value="topic.code" :key="topic.code">{{ topic.name }}</option>
                 </select>
 
             </div>
-
+            <p>&nbsp&nbsp&nbsp</p>
+            <div class="form-control">
+                <select @change="changeFilter($event)">
+                    <option value="" selected disabled>Pandemic Phase</option>
+                    <option v-for="phase in js_phase" :value="phase.code" :key="phase.code">{{ phase.name }}</option>
+                </select>
+            </div>
         </div>
         <div class="search">
             <input name="search-bar" type="text" id="search-text" />
@@ -88,20 +94,20 @@
                     <div class="project-img">
                         <img v-if="project.thumbnail" class="project-img" :src="project.thumbnail.data.full_url">
                     </div>
+
                     <div class="project-text small">
                         <p id="title">{{project.title}}</p>
                         <p id="date">{{dateShow(project.project_initiation_date)}}</p>
                         <p id="desc">{{project.description}}</p>
                         <div class="tag-section">
                             <div class="tag-row">
-                                <span id="location-icon" class="material-icons"> local_offer</span>
-                                <div class="tag-col" v-for="topics in project.project_type" v-if="topics">
-                                    <p v-if="topics == 'collabs'"><span class="tag dc-tag">Data Collaboratives</span>
-                                    </p>
-                                    <p v-if="topics == 'proposals-challenges'"><span class="tag dp-tag">Data Challenges
-                                            and Calls for Proposals</span></p>
-                                    <p v-if="topics == 'requests'"><span class="tag de-tag">Requests for Data and
-                                            Expertise</span></p>
+                                <span id="location-icon" class="material-icons"> search</span>
+                                <div class="tag-col" v-if="project.scope">
+                                    <p v-if="project.scope == '0'"><span class="tag dp-tag">Local</span></p>
+                                    <p v-if="project.scope == '1'"><span class="tag dp-tag">Regional</span></p>
+                                    <p v-if="project.scope == '2'"><span class="tag dp-tag">National</span></p>
+                                    <p v-if="project.scope == '3'"><span class="tag dp-tag">Multilateral</span></p>
+                                    <p v-if="project.scope == '4'"><span class="tag dp-tag">Undefined</span></p>
                                 </div>
                             </div>
                             <div class="tag-row">
@@ -109,6 +115,7 @@
                                 <div class="tag-col" v-for="regions in project.region" v-if="regions">
                                     <p v-if="regions == 'eca'"><span class="tag region-tag">Europe and Central
                                             Asia</span></p>
+                                    <p v-if="regions == 'sasia'"><span class="tag region-tag">South Asia</span></p>
                                     <p v-if="regions == 'lac'"><span class="tag region-tag">Latin America and the
                                             Caribbean</span></p>
                                     <p v-if="regions == 'eap'"><span class="tag region-tag">East Asia and Pacific</span>
@@ -119,11 +126,28 @@
                                     <p v-if="regions == 'ssa'"><span class="tag region-tag">Sub-Saharan Africa</span>
                                     </p>
                                     <p v-if="regions == 'global'"><span class="tag region-tag">Global</span></p>
+
                                 </div>
                             </div>
-
-
-
+                            <div class="tag-row phase">
+                                <p>Pandemic Phase</p>
+                                <div class="phase-row">
+                                    
+                                    <div class="phase-col" v-bind:class = "(project.pandemic_phase[1] == 'phase_0')?'phase-sel':'none'">
+                                        Readiness
+                                    </div>
+                                    <div class="phase-col" v-bind:class = "(project.pandemic_phase[1] == 'phase_1')?'phase-sel':'none'">
+                                        Response
+                                    </div>
+                                    <div class="phase-col" v-bind:class = "(project.pandemic_phase[1] == 'phase_2')?'phase-sel':'none'">
+                                        Recovery
+                                    </div>
+                                    <div class="phase-col" v-bind:class = "(project.pandemic_phase[1] == 'phase_3')?'phase-sel':'none'">
+                                        Reform
+                                    </div>
+                                    
+                                </div>
+                            </div>
 
                         </div>
 
