@@ -40,15 +40,23 @@
             </div>
         </div>
         <div class="description-text">
-            <p>This Living Repository is part of a <a target="_blank" href="https://medium.com/data-stewards-network/a-call-for-action-813669f32244">call for action</a> to build a responsible infrastructure for data-driven pandemic response.</p>
-            <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeZUnWUZ8xPbJa7gjfvGOKRVsoVq4nZL5cwUIpZjV1TbfuA9w/viewform" target="_blank">JOIN US AND SIGN HERE</a>
+            <p>This Living Repository is part of a <a target="_blank"
+                    href="https://medium.com/data-stewards-network/a-call-for-action-813669f32244">call for action</a>
+                to build a responsible infrastructure for data-driven pandemic response.</p>
+            <a class="btn"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSeZUnWUZ8xPbJa7gjfvGOKRVsoVq4nZL5cwUIpZjV1TbfuA9w/viewform"
+                target="_blank">JOIN US AND SIGN HERE</a>
         </div>
         <div class="description-bullets">
-        <ul>
-            <li>It serves as a repository for <a href="https://datacollaboratives.org/" target="_blank">data collaboratives</a> seeking to address the spread of <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen" target="_blank"> COVID-19</a> and its secondary effects. </li>
-            <li>The repository invites individuals to share projects that show a commitment to privacy protection, data responsibility, and overall user well-being. A project’s inclusion in this living repository does not indicate endorsement by The GovLab or confirmation of its success in meeting these goal</li>
+            <p>This page serves as a repository for <a href="https://datacollaboratives.org/" target="_blank">data
+                collaboratives</a> seeking to address the spread of<a
+                href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen"
+                target="_blank"> COVID-19</a> and
+                its secondary effects. We invite individuals to share projects that involve the collaborative reuse of
+                data and show a commitment to privacy protection, data responsibility, and overall user well-being. A
+                project’s inclusion in this living repository does not indicate endorsement by The GovLab or
+                confirmation of its success in meeting these goal.</p>
 
-        </ul>    
         </div>
         <div class="filters">
             <div class="form-control">
@@ -92,7 +100,7 @@
         <div class="count-entries">
             <p><span>Total number of projects in the repository: <b>{{indexData.length}}</b></span></p>
         </div>
-        
+
         <div class="project-list">
             <div class="no-project" v-if="!filterData.length">
                 Sorry no projects found for the filter criteria you selected!
@@ -140,20 +148,24 @@
                             <div class="tag-row phase">
                                 <p>Pandemic Phase</p>
                                 <div class="phase-row">
-                                    
-                                    <div class="phase-col" v-bind:class = "(project.pandemic_phase[1] == 'phase_0')?'phase-sel':'none'">
+
+                                    <div class="phase-col"
+                                        v-bind:class="(project.pandemic_phase[1] == 'phase_0')?'phase-sel':'none'">
                                         Readiness
                                     </div>
-                                    <div class="phase-col" v-bind:class = "(project.pandemic_phase[1] == 'phase_1')?'phase-sel':'none'">
+                                    <div class="phase-col"
+                                        v-bind:class="(project.pandemic_phase[1] == 'phase_1')?'phase-sel':'none'">
                                         Response
                                     </div>
-                                    <div class="phase-col" v-bind:class = "(project.pandemic_phase[1] == 'phase_2')?'phase-sel':'none'">
+                                    <div class="phase-col"
+                                        v-bind:class="(project.pandemic_phase[1] == 'phase_2')?'phase-sel':'none'">
                                         Recovery
                                     </div>
-                                    <div class="phase-col" v-bind:class = "(project.pandemic_phase[1] == 'phase_3')?'phase-sel':'none'">
+                                    <div class="phase-col"
+                                        v-bind:class="(project.pandemic_phase[1] == 'phase_3')?'phase-sel':'none'">
                                         Reform
                                     </div>
-                                    
+
                                 </div>
                             </div>
 
@@ -178,8 +190,8 @@
         <footer>
             <div class="logo-side">
                 <div class="logos">
-                <img src="img/govlab-logo-white.png">
-                <img id="luminate" src="img/luminate.png">
+                    <img src="img/govlab-logo-white.png">
+                    <img id="luminate" src="img/luminate.png">
                 </div>
                 <p>The Governance Lab's mission is to improve people's lives by changing the way we govern. Our goal at
                     The GovLab is to strengthen the ability of institutions — including but not limited to governments —

@@ -119,12 +119,22 @@ body {
 }
 .description-bullets{
   background-color: white;
-  padding: 2rem 20rem;
-  text-align: left;
+  padding: 2rem 25rem;
+  text-align: justify;
 }
-.description-bullets li{
+@media screen and (min-width: 320px) and (max-width: 768px){
+  .description-text{
+    padding: 3rem 1rem;
+  }
+  .description-bullets{
+    background-color: white;
+    padding: 2rem 1rem;
+  }
+}
+.description-bullets p{
   font-size: 1.2rem;
   font-weight: 300;
+  line-height: 1.8;
   margin-bottom: 5px;
   color:var(--dark-grey);
 }
@@ -1089,6 +1099,9 @@ header.project-header{
 }
 
 @media screen and (max-width: 768px){
+.filters{
+  padding: 0.25rem 1rem;
+}
   .project-header-row{
     display:flex;
     flex-direction: column;  
@@ -1142,7 +1155,7 @@ header.project-header{
   .hero{
     padding: 0rem 2rem;
     flex-direction: column;
-    height: 80vh;
+    height: 20vh;
   }
   .hero p{
     margin: 0 0 0em 0em;
