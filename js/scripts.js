@@ -106,6 +106,10 @@ new Vue({
       ).then(data => {
 
         self.indexData = data.data;
+   //Most recently added first
+        self.indexData = self.indexData.sort(function(a, b){
+            return (b.id > a.id) ? 1 : -1;});
+        
         self.filterData = self.indexData;
       })
         .catch(error => console.error(error));
