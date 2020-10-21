@@ -421,7 +421,7 @@ padding: 10px 20px;
 .column-summary p{
   font-weight: 600;
   font-size: 1rem;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: var(--grey);
   margin: 0.8rem 0;
 }
