@@ -121,6 +121,9 @@ body {
   background-color: white;
   padding: 2rem 25rem;
   text-align: justify;
+  align-items: center;
+  display:flex;
+  flex-direction: column;
 }
 @media screen and (min-width: 320px) and (max-width: 768px){
   .description-text{
@@ -162,6 +165,18 @@ body {
   background-color: var(--white40);
   padding: 1rem 2rem;
   text-decoration: none;
+}
+.description-bullets a.btn{
+  color: var(--dark-grey);
+  text-transform: uppercase;
+  background-color: var(--grey20);
+  padding: 1rem 2rem;
+  text-decoration: none;
+}
+.description-bullets a.btn:hover{
+  color: white;
+  background-color: var(--yellow);
+
 }
 .read-more{
   margin-bottom: 1rem;
