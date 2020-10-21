@@ -169,36 +169,6 @@ new Vue({
       }
       self.filterData = self.filtered_phase;
     },
-    sortArray(by){
-      /*
-        Checks to see if what the user selected to sort by
-        is the same as it's been. If it is, then we toggle the
-        direction.
-      */
-      if( by == this.sortBy ){
-        if( this.sortDirection == 'ASC' ){
-          this.sortDirection = 'DESC';
-        }else{
-          this.sortDirection = 'ASC';
-        }
-      }
-  
-      if( by != this.sortBy ){
-        this.sortDirection = 'ASC';
-        this.sortBy = by;
-      }
-      this.filterData.sort( function( a, b ){
-        if( this.sortDirection == 'ASC' ){
-          return ( ( a.title == b.title ) ? 0 : ( ( a.title > b.title ) ? 1 : -1 ) );
-        }
-    
-        if( this.sortDirection == 'DESC' ){
-          return ( ( a.title == b.title ) ? 0 : ( ( a.title < b.title ) ? 1 : -1 ) );
-        }
-      });
-    
-
-    },
 
   }
 });
