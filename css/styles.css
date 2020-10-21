@@ -79,7 +79,7 @@ body {
 }
 
 .hero{
-  height: 50vh;
+  height: 30vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -110,6 +110,75 @@ body {
 }
 .hero.testing h1{
  font-size: 4em;
+}
+.description-text{
+  background-color: var(--purple);
+  padding: 3rem 20rem;
+  text-align: center;
+}
+.description-bullets{
+  background-color: white;
+  padding: 2rem 20rem;
+  text-align: left;
+}
+.description-bullets li{
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 5px;
+  color:var(--dark-grey);
+}
+.description-text p{
+  color: white;
+  text-transform: uppercase;
+  margin-top:0;
+  margin-bottom: 2rem;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+.description-text a{
+  color: white;
+  text-decoration-style: dotted;
+  font-weight: 300;
+}
+.description-bullets a{
+
+  text-decoration-style: dotted;
+  font-weight: 300;
+}
+.description-text a.btn{
+  color: white;
+  text-transform: uppercase;
+  background-color: var(--white40);
+  padding: 1rem 2rem;
+  text-decoration: none;
+}
+.read-more{
+  margin-bottom: 1rem;
+}
+.read-more a.btn{
+  color: var(--dark-grey);
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  background-color: var(--grey20);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  margin-left: 2rem;
+}
+.count-entries{
+  text-align: center;
+  padding-top: 1rem;
+}
+.count-entries p{
+  text-transform: uppercase;
+  color: var(--dark-grey);
+}
+.count-entries p span{
+  background-color: var(--grey60);
+  padding: 1rem 2rem;
+}
+.count-entries p span b{
+font-size: 1.4rem;
 }
 .text{
   display:flex;
@@ -789,6 +858,11 @@ footer{
 .logo-side img{
   height: 60px;
 }
+.logo-side img#luminate{
+  height: 40px;
+  margin-bottom:10px;
+  margin-left:10px;
+}
 .address{
   width:50%;
 }
@@ -812,7 +886,7 @@ header.project-header{
   .project-header-row{
     display:flex;
     flex-direction: row;  
-    height: 60vh;
+    height: 65vh;
   }
   .project-header-col{
     display:flex;

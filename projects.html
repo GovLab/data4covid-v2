@@ -45,6 +45,9 @@
             <h1>{{filterData[0].title}}</h1>
             <p id="date">{{dateShow(filterData[0].project_initiation_date)}}</p>
             <p>{{filterData[0].description}}</p>
+            <div class="read-more">
+                <a class="btn" href="#long-description">Read more</a>
+               </div>
             <p id="bold">PARTICIPANTS</p>
             <p>{{filterData[0].participants}}</p>
             <div class="tag-section">
@@ -77,7 +80,7 @@
                     <p><span class="tag email-tag">{{filterData[0].contact_info}}</span></p>
                 </div>
                 </div>
-              
+
         </div>
     </div>
 
@@ -86,74 +89,77 @@
         <div class="row-summary">
           <div class="column-summary">
             <p><span class="summary-item">Type of Question</span>&nbsp<span v-for="qn in filterData[0].type_of_question">
-                <span v-if="qn == 'type_0'">Situational Awareness</span>
-                <span v-if="qn == 'type_1'">Cause and Effect Analysis</span>
-                <span v-if="qn == 'type_2'">Prediction</span>
-                <span v-if="qn == 'type_3'">Impact Assessment</span>
+                <span v-if="qn == 'type_0'">Situational Awareness;</span>
+                <span v-if="qn == 'type_1'">Cause and Effect Analysis;</span>
+                <span v-if="qn == 'type_2'">Prediction;</span>
+                <span v-if="qn == 'type_3'">Impact Assessment;</span>
             </span></p>
             <p><span class="summary-item">Topic Area</span>&nbsp<span v-for="topic in filterData[0].topic_areas">
-                <span v-if="topic == 'topic_0'">Tracking the Pandemic’s Evolution</span>
-                <span v-if="topic == 'topic_1'">Developing Disease Treatment</span>
-                <span v-if="topic == 'topic_2'">Identifying Availability and Demand for Supplies</span>
-                <span v-if="topic == 'topic_3'">Monitoring Adherence to Health Protocols and Practices</span>
-                <span v-if="topic == 'topic_4'">Understanding Public Perceptions, Well-being and Behavior</span>
-                <span v-if="topic == 'topic_5'">Protecting Democracy, Human Rights and Promoting Government Accountability</span>
-                <span v-if="topic == 'topic_6'">Addressing Misinformation</span>
-                <span v-if="topic == 'topic_7'">Supporting Post-Pandemic Re-openings and Recovery</span>
-                <span v-if="topic == 'topic_8'">Alleviating the Burden on Migrants</span>
-                <span v-if="topic == 'topic_9'">Alleviating Pandemic-related Unemployment and Poverty</span>
-                <span v-if="topic == 'topic_10'">Guaranteeing Protections for Workers</span>
-                <span v-if="topic == 'topic_11'">Supporting Education, Upskilling and Reskilling</span>
-                <span v-if="topic == 'topic_12'">SFostering Business and Government Solvency</span>
-                <span v-if="topic == 'topic_13'">Assessing Environmental Impact</span>
-                <span v-if="topic == 'topic_14'">Understanding the Economic Impact</span>
+                <span v-if="topic == 'topic_0'">Tracking the Pandemic’s Evolution;</span>
+                <span v-if="topic == 'topic_1'">Developing Disease Treatment;</span>
+                <span v-if="topic == 'topic_2'">Identifying Availability and Demand for Supplies;</span>
+                <span v-if="topic == 'topic_3'">Monitoring Adherence to Health Protocols and Practices;</span>
+                <span v-if="topic == 'topic_4'">Understanding Public Perceptions, Well-being and Behavior;</span>
+                <span v-if="topic == 'topic_5'">Protecting Democracy, Human Rights and Promoting Government Accountability;</span>
+                <span v-if="topic == 'topic_6'">Addressing Misinformation;</span>
+                <span v-if="topic == 'topic_7'">Supporting Post-Pandemic Re-openings and Recovery;</span>
+                <span v-if="topic == 'topic_8'">Alleviating the Burden on Migrants;</span>
+                <span v-if="topic == 'topic_9'">Alleviating Pandemic-related Unemployment and Poverty;</span>
+                <span v-if="topic == 'topic_10'">Guaranteeing Protections for Workers;</span>
+                <span v-if="topic == 'topic_11'">Supporting Education, Upskilling and Reskilling;</span>
+                <span v-if="topic == 'topic_12'">SFostering Business and Government Solvency;</span>
+                <span v-if="topic == 'topic_13'">Assessing Environmental Impact;</span>
+                <span v-if="topic == 'topic_14'">Understanding the Economic Impact;</span>
                 <p><span class="summary-item">Sector</span>&nbsp<span>
-                    <span v-if="filterData[0].sector == '0'">Public Health</span>
-                    <span v-if="filterData[0].sector == '1'">Social</span>
-                    <span v-if="filterData[0].sector == '2'">Economic</span>
+                    <span v-if="filterData[0].sector == '0'">Public Health;</span>
+                    <span v-if="filterData[0].sector == '1'">Social;</span>
+                    <span v-if="filterData[0].sector == '2'">Economic;</span>
            
                 </span></p>
                 <p><span class="summary-item">Scope</span>&nbsp
-                    <span v-if="filterData[0].scope == '0'">Local</span>
-                    <span v-if="filterData[0].scope == '1'">Regional</span>
-                    <span v-if="filterData[0].scope == '2'">National</span>
-                    <span v-if="filterData[0].scope == '3'">Multilateral</span></p>
+                    <span v-if="filterData[0].scope == '0'">Local;</span>
+                    <span v-if="filterData[0].scope == '1'">Regional;</span>
+                    <span v-if="filterData[0].scope == '2'">National;</span>
+                    <span v-if="filterData[0].scope == '3'">Multilateral;</span></p>
+                    <span v-if="filterData[0].scope == '4'">Undefined;</span></p>
+         
             
           </div>
           <div class="column-summary right">
 
                 <p><span class="summary-item">Data Supplier</span>&nbsp
                     <span v-for="supplier in filterData[0].data_supplier">
-                    <span v-if="supplier == 'supplier_0'">Private Sector</span>
-                    <span v-if="supplier == 'supplier_1'">Civil Society</span>
-                    <span v-if="supplier == 'supplier_2'">Research/Academia</span>
-                    <span v-if="supplier == 'supplier_3'">General Public</span>
-                    <span v-if="supplier == 'supplier_4'">Public Sector</span>
+                    <span v-if="supplier == 'supplier_0'">Private Sector;</span>
+                    <span v-if="supplier == 'supplier_1'">Civil Society;</span>
+                    <span v-if="supplier == 'supplier_2'">Research/Academia;</span>
+                    <span v-if="supplier == 'supplier_3'">General Public;</span>
+                    <span v-if="supplier == 'supplier_4'">Public Sector;</span>
                 </span></p>
                 <p><span class="summary-item">Data User</span>&nbsp
                     <span v-for="user in filterData[0].data_user">
-                    <span v-if="user == 'user_0'">Private Sector</span>
-                    <span v-if="user == 'user_1'">Civil Society</span>
-                    <span v-if="user == 'user_2'">Research/Academia</span>
-                    <span v-if="user == 'user_3'">General Public</span>
-                    <span v-if="user == 'user_4'">Public Sector</span>
+                    <span v-if="user == 'user_0'">Private Sector;</span>
+                    <span v-if="user == 'user_1'">Civil Society;</span>
+                    <span v-if="user == 'user_2'">Research/Academia;</span>
+                    <span v-if="user == 'user_3'">General Public;</span>
+                    <span v-if="user == 'user_4'">Public Sector;</span>
                 </span></p>
                 <p><span class="summary-item">Data Sources</span>&nbsp
                     <span v-for="source in filterData[0].data_sources">
-                    <span v-if="source == 'source_0'">Primary research</span>
-                    <span v-if="source == 'source_1'">Smartphone/telecom data</span>
-                    <span v-if="source == 'source_2'">Government data and other public datasets</span>
-                    <span v-if="source == 'source_3'">Social media data</span>
-                    <span v-if="source == 'source_4'">Online search data</span>
+                    <span v-if="source == 'source_0'">Primary research;</span>
+                    <span v-if="source == 'source_1'">Smartphone/telecom data;</span>
+                    <span v-if="source == 'source_2'">Government data and other public datasets;</span>
+                    <span v-if="source == 'source_3'">Social media data;</span>
+                    <span v-if="source == 'source_4'">Online search data;</span>
                 </span></p>
                 <p><span class="summary-item">Output</span>&nbsp
-                    <span v-for="out in filterData[0].outputs">
-                    <span v-if="out == 'output_0'">Dashboard / Repository</span>
-                    <span v-if="out == 'output_1'">Data Visualization</span>
-                    <span v-if="out == 'output_2'">Static Reporting</span>
-                    <span v-if="out == 'output_3'">Mobile App </span>
-                    <span v-if="out == 'output_4'">Analytics Platform</span>
-                    <span v-if="out == 'output_5'">User Tool</span>
+                    
+                    <span v-for="(out,index) in filterData[0].outputs">
+                    <span v-if="out == 'output_0'">Dashboard / Repository;</span>
+                    <span v-if="out == 'output_1'">Data Visualization;</span>
+                    <span v-if="out == 'output_2'">Static Reporting;</span>
+                    <span v-if="out == 'output_3'">Mobile App;</span>
+                    <span v-if="out == 'output_4'">Analytics Platform;</span>
+                    <span v-if="out == 'output_5'">User Tool;</span>
                 </span></p>
           </div>
         </div>
@@ -179,7 +185,7 @@
             <p class="tip">Reform &nbsp</p> 
           </a>
         </div>
-    <div class="project-page-section">
+    <div id="long-description" class="project-page-section">
         <h3>DESCRIPTION</h3>
         <p> {{filterData[0].long_description}}</p>
     </div>

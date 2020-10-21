@@ -37,16 +37,19 @@
         <div class="hero testing hero-banner">
             <div class="text">
                 <h1>#Data4COVID19</h1>
-                <p>#Data4COVID19 is a series of projects undertaken by The GovLab—with partners such as the OECD, Open
-                    Data
-                    Charter, Luce Foundation, Microsoft, Rockefeller Foundation, SDSN TRENDS, World Economic Forum,
-                    University of Washington, and others—to identify, collect, and analyze the value data can provide to
-                    the
-                    ongoing COVID-19 pandemic.
-                </p>
             </div>
         </div>
+        <div class="description-text">
+            <p>This Living Repository is part of a <a target="_blank" href="https://medium.com/data-stewards-network/a-call-for-action-813669f32244">call for action</a> to build a responsible infrastructure for data-driven pandemic response.</p>
+            <a class="btn" href="">JOIN US AND SIGN HERE</a>
+        </div>
+        <div class="description-bullets">
+        <ul>
+            <li>It serves as a repository for <a href="https://datacollaboratives.org/" target="_blank">data collaboratives</a> seeking to address the spread of <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen" target="_blank"> COVID-19</a> and its secondary effects. </li>
+            <li>The repository invites individuals to share projects that show a commitment to privacy protection, data responsibility, and overall user well-being. A project’s inclusion in this living repository does not indicate endorsement by The GovLab or confirmation of its success in meeting these goal</li>
 
+        </ul>    
+        </div>
         <div class="filters">
             <div class="form-control">
                 <select @change="changeFilter($event)">
@@ -85,6 +88,11 @@
             <input name="buttonExecute" @click="searchItems()" type="button" value="Search" />
             <input name="buttonExecute" @click="ResetItems()" type="button" value="Reset" />
         </div>
+
+        <div class="count-entries">
+            <p><span>Total number of projects in the repository: <b>{{indexData.length}}</b></span></p>
+        </div>
+        
         <div class="project-list">
             <div class="no-project" v-if="!filterData.length">
                 Sorry no projects found for the filter criteria you selected!
@@ -169,7 +177,10 @@
         </div>
         <footer>
             <div class="logo-side">
+                <div class="logos">
                 <img src="img/govlab-logo-white.png">
+                <img id="luminate" src="img/luminate.png">
+                </div>
                 <p>The Governance Lab's mission is to improve people's lives by changing the way we govern. Our goal at
                     The GovLab is to strengthen the ability of institutions — including but not limited to governments —
                     and people to work more openly, collaboratively, effectively, and legitimately to make better
@@ -180,6 +191,7 @@
                     sector, geography, and level of government. For more information, visit thegovlab.org.</p>
             </div>
             <div class="address">
+
                 <h4>CONTACT US</h4>
                 <p>The GovLab<br>
                     NYU Tandon School of Engineering<br>
