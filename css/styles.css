@@ -783,7 +783,10 @@ display: flex;
 flex-flow: row wrap;
 justify-content: left;
 align-items: center;
-margin: 1rem 0;
+margin: 0.25rem 0;
+}
+#project-page .tag-row{
+  margin: 1rem 0;
 }
 .tag-col{
   display:flex;
