@@ -168,7 +168,8 @@ new Vue({
         self.filtered_phase = filtered_by_phase;
       }
       self.filterData = self.filtered_phase;
-    },
+    }
+
 
   }
 });

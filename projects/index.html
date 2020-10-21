@@ -41,16 +41,17 @@
         <div class="project-header-col col-20":style="{ backgroundImage: 'url(' + filterData[0].thumbnail.data.full_url+ ')' }">
             
         </div>
+        
         <div class="project-header-col col-80">
             <h1>{{filterData[0].title}}</h1>
             <p id="date">{{dateShow(filterData[0].project_initiation_date)}}</p>
-            <p>{{filterData[0].long_description}}</p>
+            <p>{{filterData[0].description}}</p>
             <div class="read-more">
-                <!-- <a class="btn" href="#long-description">Read more</a> -->
+                <a class="btn" href="#long-description">Read more</a>
                 <a class="btn" :href="filterData[0].url" target="_blank">Project Website</a>
                </div>
-            <p id="bold">PARTICIPANTS</p>
-            <p>{{filterData[0].participants}}</p>
+
+            
             <div class="tag-section">
                 <div class="tag-row">
                     <span id="location-icon" class="material-icons"> local_offer</span>
@@ -81,14 +82,36 @@
                     <p><span class="tag email-tag">{{filterData[0].contact_info}}</span></p>
                 </div>
                 </div>
-
+                <div class="phase">
+                <p>PANDEMIC PHASE</p>
+                <div class="row-cust mt-5">
+                    <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase[1] == 'phase_0')?'active':'none'">
+                      <div class="dot-class"> <span class="dot"></span></div>
+                      <p class="tip">Readiness &nbsp</p> 
+                    </a>
+                    <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase[1] == 'phase_1')?'active':'none'">
+                        <div class="dot-class"> <span class="dot"></span></div>
+                        <p class="tip">Response &nbsp</p> 
+                      </a>
+                      <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase[1] == 'phase_2')?'active':'none'">
+                        <div class="dot-class"> <span class="dot"></span></div>
+                        <p class="tip">Recovery &nbsp</p> 
+                      </a>
+                      <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase[1] == 'phase_3')?'active':'none'">
+                        <div class="dot-class"> <span class="dot"></span></div>
+                        <p class="tip">Reform &nbsp</p> 
+                      </a>
+                    </div>
+                    </div>
         </div>
     </div>
 
     <div class="summary">
-  
+
         <div class="row-summary">
           <div class="column-summary">
+ 
+            <p><span class="summary-item">Participants</span>&nbsp<span>{{filterData[0].participants}}</span></p>
             <p><span class="summary-item">Type of Question</span>&nbsp<span v-for="qn in filterData[0].type_of_question">
                 <span v-if="qn == 'type_0'">Situational Awareness;</span>
                 <span v-if="qn == 'type_1'">Cause and Effect Analysis;</span>
@@ -121,7 +144,7 @@
                     <span v-if="filterData[0].scope == '0'">Local;</span>
                     <span v-if="filterData[0].scope == '1'">Regional;</span>
                     <span v-if="filterData[0].scope == '2'">National;</span>
-                    <span v-if="filterData[0].scope == '3'">Multilateral;</span></p>
+                    <span v-if="filterData[0].scope == '3'">Multilateral;</span>
                     <span v-if="filterData[0].scope == '4'">Undefined;</span></p>
          
             
@@ -162,34 +185,15 @@
                     <span v-if="out == 'output_4'">Analytics Platform;</span>
                     <span v-if="out == 'output_5'">User Tool;</span>
                 </span></p>
+
           </div>
         </div>
     </div>
-    <div class="title-divider">
-        <h1>PANDEMIC PHASE</h1>
-    </div>
-    <div class="row-cust mt-5">
-        <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase[1] == 'phase_0')?'active':'none'">
-          <div class="dot-class"> <span class="dot"></span></div>
-          <p class="tip">Readiness &nbsp</p> 
-        </a>
-        <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase[1] == 'phase_1')?'active':'none'">
-            <div class="dot-class"> <span class="dot"></span></div>
-            <p class="tip">Response &nbsp</p> 
-          </a>
-          <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase[1] == 'phase_2')?'active':'none'">
-            <div class="dot-class"> <span class="dot"></span></div>
-            <p class="tip">Recovery &nbsp</p> 
-          </a>
-          <a target="_blank" class="column-3-timeline-5" v-bind:class = "(filterData[0].pandemic_phase[1] == 'phase_3')?'active':'none'">
-            <div class="dot-class"> <span class="dot"></span></div>
-            <p class="tip">Reform &nbsp</p> 
-          </a>
-        </div>
-    <!-- <div id="long-description" class="project-page-section">
+
+    <div id="long-description" class="project-page-section">
         <h3>DESCRIPTION</h3>
         <p> {{filterData[0].long_description}}</p>
-    </div> -->
+    </div>
     
 <footer>
     <div class="logo-side">
