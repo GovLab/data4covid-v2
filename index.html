@@ -26,6 +26,7 @@
     <meta property="og:image" content="img/covid-logo-color.png" />
     <title>Data4COVID19</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="https://use.typekit.net/kwv5eho.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/@directus/sdk-js@5.3.4/dist/directus-sdk.umd.min.js"></script>
@@ -34,10 +35,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
-
+<a style="text-decoration: none;" href="http://data4covid19.org" target="_blank" class="top-bar_button"><span class="material-icons">
+    reply
+    </span></a>
 <header class="gl-header">
-    <a class="govlab-logo" href="index.html">
+    <a class="govlab-logo" target="_blank" href="http://thegovlab.org">
         <img src="img/govlab-logo-white.png" alt="The GovLab">
+    </a>
+    <a class="luminate-logo" target="_blank" href="http://luminategroup.com">
+        <img id="luminate" src="img/luminate.png">
     </a>
 </header>
 
@@ -46,31 +52,33 @@
         <div class="hero testing hero-banner">
             <div class="text">
                 <h1>#Data4COVID19</h1>
+                <span><p>A living repository for &nbsp<a href="https://datacollaboratives.org/" target="_blank">data
+                    collaboratives</a>&nbsp seeking to address the spread of &nbsp <a
+                    href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen"
+                    target="_blank">COVID-19</a>&nbsp </p></span>
             </div>
         </div>
+        <div class="description-boxes">
         <div class="description-text">
-            <p>This Living Repository is part of a <a target="_blank"
-                    href="https://medium.com/data-stewards-network/a-call-for-action-813669f32244">call for action</a>
-                to build a responsible infrastructure for data-driven pandemic response.</p>
+            <p>Share your project for inclusion. We seek to learn from initiatives that reuse data for covid19 in a collaborative, responsible and systematic way. </p>
             <a class="btn"
-                href="https://docs.google.com/forms/d/e/1FAIpQLSeZUnWUZ8xPbJa7gjfvGOKRVsoVq4nZL5cwUIpZjV1TbfuA9w/viewform"
-                target="_blank">JOIN US AND SIGN HERE</a>
+            href="https://forms.gle/R58Wn15xTJgR7TFL8"
+            target="_blank">CONTRIBUTE TO THIS REPOSITORY</a>
+            
         </div>
         <div class="description-bullets">
-            <p>This page serves as a repository for <a href="https://datacollaboratives.org/" target="_blank">data
-                collaboratives</a> seeking to address the spread of<a
-                href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen"
-                target="_blank"> COVID-19</a> and
-                its secondary effects. We invite individuals to share projects that involve the collaborative reuse of
-                data and show a commitment to privacy protection, data responsibility, and overall user well-being. A
-                project’s inclusion in this living repository does not indicate endorsement by The GovLab or
-                confirmation of its success in meeting these goal.</p>
+            <p>Part of our <a href="https://medium.com/data-stewards-network/a-call-for-action-813669f32244" target="_blank">Call For Action</a> to Build A Responsible Infrastructure For Data-driven Pandemic Response.
+            </p>
                 <br>
                 <a class="btn"
-                href="https://forms.gle/R58Wn15xTJgR7TFL8"
-                target="_blank">CONTRIBUTE TO THIS REPOSITORY</a>
+                href="https://thegovlab.us6.list-manage.com/subscribe?u=1a990feb5c&id=9440a57cfc&utm_source=Data+Stewards+Network&utm_campaign=358957fad7-EMAIL_CAMPAIGN_2019_05_17_08_37_COPY_01&utm_medium=email&utm_term=0_bc6d09925f-358957fad7-87790069"
+                target="_blank">Sign up for the data4covid19 newsletter</a>
 
         </div>
+    </div>
+    <div class="divider">
+        <h1>Explore the repository</h1>
+    </div>
         <div class="filters">
             <div class="form-control">
                 <select @change="changeFilter($event)">
@@ -163,19 +171,19 @@
                                 <div class="phase-row">
 
                                     <div class="phase-col"
-                                        v-bind:class="(project.pandemic_phase[1] == 'phase_0')?'phase-sel':'none'">
+                                        v-bind:class="(project.pandemic_phase.includes('phase_0'))?'phase-sel':'none'">
                                         Readiness
                                     </div>
                                     <div class="phase-col"
-                                        v-bind:class="(project.pandemic_phase[1] == 'phase_1')?'phase-sel':'none'">
+                                        v-bind:class="(project.pandemic_phase.includes('phase_1'))?'phase-sel':'none'">
                                         Response
                                     </div>
                                     <div class="phase-col"
-                                        v-bind:class="(project.pandemic_phase[1] == 'phase_2')?'phase-sel':'none'">
+                                        v-bind:class="(project.pandemic_phase.includes('phase_2'))?'phase-sel':'none'">
                                         Recovery
                                     </div>
                                     <div class="phase-col"
-                                        v-bind:class="(project.pandemic_phase[1] == 'phase_3')?'phase-sel':'none'">
+                                        v-bind:class="(project.pandemic_phase.includes('phase_3'))?'phase-sel':'none'">
                                         Reform
                                     </div>
 
@@ -195,10 +203,10 @@
             <p>Information on each of these project streams, as well information about upcoming coronavirus-related
                 events, can be found in our weekly newsletter. Individuals interested in engaging with one or more of
                 these strands can contact us at <a style="color:#ffffff;font-weight:400"
-                    href="mailto:stefaan@thegovlab.org">stefaan@thegovlab.org.</a>
-                <br>If these projects interest you, you might also be interested in The GovLab’s <a
+                    href="mailto:stefaan@thegovlab.org">stefaan@thegovlab.org.</a></p>
+                <!-- <br>If these projects interest you, you might also be interested in The GovLab’s <a
                     style="color:#ffffff; font-weight:400" href="https://covidcourse.thegovlab.org">Covid Course</a>, a
-                collective intelligence course which aims to improve responses to COVID-19.</p>
+                collective intelligence course which aims to improve responses to COVID-19.</p> -->
         </div>
         <footer>
             <div class="logo-side">

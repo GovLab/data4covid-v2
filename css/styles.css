@@ -14,6 +14,7 @@
   --white70: #ffffffb4;
   --white40: #ffffff44;
   --white10: #ffffff15;
+  --grey10_select: #4C4C4C;
   --white: #ffffff;
   font-size: 14px;
 }
@@ -60,15 +61,25 @@ header img{
   padding: 10px 0 10px 0;
   height: 50px;
 }
+.top-bar_button{
+  position:absolute;
+  top:15px;
+  left:15px;
+  z-index: 100;
+}
 .gl-header{
   display:flex;
-  flex-direction: column;
+  flex-direction: row;
   padding:0 12rem;
   background-image: url("../img/hero-head.jpg");
   background-blend-mode: multiply;
   background-color: var(--purple); 
   background-size: cover;
   background-position: center top;
+}
+.gl-header .luminate-logo img{
+  height:30px;
+  margin: 10px;
 }
 
 body {
@@ -96,7 +107,6 @@ body {
   background-image: url("../img/hero.jpg");
 }
 .hero.testing{
-  flex-direction: column;
   text-align:center;
   padding: 0 6rem;
 }
@@ -106,58 +116,80 @@ body {
 }
 .hero.testing p{
   text-align: center;
+  display:block !important;
  margin-top: 20px;
  font-size: 1.5rem;
+}
+.hero.testing .text a{
+  color: var(--white);
+  text-decoration-style: dotted;
+  font-weight: 300;
 }
 .hero.testing h1{
  font-size: 4em;
 }
+.hero.testing span{
+  display:block !important;
+}
+.description-boxes{
+  display:flex;
+  flex-direction: row;
+}
+
 .description-text{
+  padding: 4rem 8rem;
   background-color: var(--purple);
-  padding: 3rem 20rem;
+  width:50%;
   text-align: center;
+  align-items: center;
+  display:flex;
+  flex-direction: column;
 }
 .description-bullets{
+  padding: 4rem 8rem;
   background-color: white;
-  padding: 2rem 25rem;
-  text-align: justify;
+  width:50%;
+  text-align: center;
   align-items: center;
   display:flex;
   flex-direction: column;
 }
 @media screen and (min-width: 320px) and (max-width: 768px){
+
+  .description-boxes{
+    display:flex;
+    flex-direction: column;
+  
+  }
   .description-text{
     padding: 3rem 1rem;
+    width:100%;
   }
   .description-bullets{
     background-color: white;
     padding: 2rem 1rem;
+    width:100%;
   }
 }
 .description-bullets p{
   font-size: 1.2rem;
   font-weight: 300;
   line-height: 1.8;
-  margin-bottom: 5px;
+  margin-bottom: 2rem;
   color:var(--dark-grey);
 }
 .description-text p{
   color: white;
-  text-transform: uppercase;
-  margin-top:0;
   margin-bottom: 2rem;
-  font-weight: 400;
-  font-size: 1.3rem;
-}
-.description-text a{
-  color: white;
-  text-decoration-style: dotted;
+  font-size: 1.2rem;
   font-weight: 300;
+  line-height: 1.8;
 }
+
 .description-bullets a{
 
   text-decoration-style: dotted;
-  font-weight: 300;
+
 }
 .description-text a.btn{
   color: white;
@@ -165,6 +197,7 @@ body {
   background-color: var(--white40);
   padding: 1rem 2rem;
   text-decoration: none;
+  font-weight: 400;
 }
 .description-bullets a.btn{
   color: var(--dark-grey);
@@ -172,6 +205,7 @@ body {
   background-color: var(--grey20);
   padding: 1rem 2rem;
   text-decoration: none;
+  font-weight: 400;
 }
 .description-bullets a.btn:hover{
   color: white;
@@ -232,7 +266,7 @@ font-size: 1.4rem;
 }
 .hero p{
   display: flex;
-  margin: 0 0 0em 4em;
+  margin: 0 0 0em 0em;
   color: var(--white);
   font-size: 12pt;
   font-weight: 100;
@@ -339,6 +373,7 @@ select {
   padding: 0 .5em;
   color: #fff;
   cursor: pointer;
+ 
 }
 select::-ms-expand {
   display: none;
@@ -375,12 +410,16 @@ select::-ms-expand {
   width: 100%;
   cursor: pointer;
   border-radius: 0;
-  background-color: var(--grey10);
+  background-color: var(--grey10_select);
   border: none;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+.filters option[selected] {
+  font-size: 12pt;
+}
+
 .search{
   width: 100%;
   text-align: center;
@@ -634,7 +673,7 @@ font-size: 1rem;
 }
 .divider{
   height:10vh;
-  background-color: var(--grey10);
+  background-color: var(--grey20);
   display:flex;
   flex-direction: row;
   justify-content: center;
@@ -643,7 +682,8 @@ font-size: 1rem;
 .divider h1{
   font-weight: 100;
   font-size: 1.8rem;
-  color: var(--grey);
+  color: var(--dark-grey);
+  text-transform: uppercase;
 }
 .living-repo{
   display:flex;
