@@ -1090,7 +1090,7 @@ header.project-header{
   .project-page-section{
     padding: 2rem 1rem;
     height: 100%;
-    background-color: var(--purple);
+    background-color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1183,7 +1183,7 @@ header.project-header{
   .project-page-section{
     padding: 2rem 1rem;
     height: 100%;
-    background-color: var(--purple);
+    background-color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
