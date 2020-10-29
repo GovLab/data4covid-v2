@@ -183,21 +183,36 @@
                 </span></p>
                 <p><span class="summary-item">Data Sources</span>&nbsp
                     <span v-for="source in filterData[0].data_sources">
-                    <span v-if="source == 'source_0'">Primary research;</span>
-                    <span v-if="source == 'source_1'">Smartphone/telecom data;</span>
-                    <span v-if="source == 'source_2'">Government data and other public datasets;</span>
-                    <span v-if="source == 'source_3'">Social media data;</span>
-                    <span v-if="source == 'source_4'">Online search data;</span>
+                        <span v-if="source == 'source_0'">Social media data;</span>
+                        <span v-if="source == 'source_1'">Online search data;</span>
+                        <span v-if="source == 'source_2'">Clinical data;</span>
+                        <span v-if="source == 'source_3'">Health system usage;</span>
+                        <span v-if="source == 'source_4'">Academic research databases;</span>
+                        <span v-if="source == 'source_5'">Consumer data;</span>
+                        <span v-if="source == 'source_6'">Surveys / crowdsourcing;</span>
+                        <span v-if="source == 'source_7'">Geospatial data;</span>
+                        <span v-if="source == 'source_8'">Location intelligence;</span>
+                        <span v-if="source == 'source_9'">Telecom Data;</span>
+                        <span v-if="source == 'source_10'">Wearables and biometric data;</span>
+                        <span v-if="source == 'source_11'">News media;</span>
+                        <span v-if="source == 'source_12'">Satellite imagery;</span>
+                        <span v-if="source == 'source_13'">Supply chain, manufacturing, and other industrial data;</span>
+                        <span v-if="source == 'source_14'">Retail;</span>
+                        <span v-if="source == 'source_15'">Transportation providers;</span>
+                        <span v-if="source == 'source_16'">IoT sensors;</span>
+                        <span v-if="source == 'source_17'">Health business data;</span>
+                        <span v-if="source == 'source_18'">Government data (open and administrative data);</span>
+                        <span v-if="source == 'source_19'">Financial data;</span>
                 </span></p>
                 <p><span class="summary-item">Output</span>&nbsp
                     
                     <span v-for="(out,index) in filterData[0].outputs">
-                    <span v-if="out == 'output_0'">Dashboard / Repository;</span>
-                    <span v-if="out == 'output_1'">Data Visualization;</span>
+                    <span v-if="out == 'output_0'">Dashboard / Visualization;</span>
+                    <span v-if="out == 'output_1'">Repository / Portal;</span>
                     <span v-if="out == 'output_2'">Static Reporting;</span>
                     <span v-if="out == 'output_3'">Mobile App;</span>
-                    <span v-if="out == 'output_4'">Analytics Platform;</span>
-                    <span v-if="out == 'output_5'">User Tool;</span>
+                    <span v-if="out == 'output_4'">Interactive Tool / Analytics;</span>
+    
                 </span></p>
 
           </div>
