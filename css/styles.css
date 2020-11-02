@@ -135,7 +135,9 @@ body {
   display:flex;
   flex-direction: row;
 }
-
+#filter-count{
+  display:none;
+}
 .description-text{
   padding: 4rem 8rem;
   background-color: var(--purple);

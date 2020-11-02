@@ -81,7 +81,7 @@
     </div>
         <div class="filters">
             <div class="form-control">
-                <select @change="changeFilter($event)">
+                <select id="form-1" @change="changeFilter($event)">
                     <option class="material-icons" value="" selected disabled>Scope</option>
                     <option v-for="scope in js_scope" :value="scope.code" :key="scope.code">{{ scope.name }}
                     </option>
@@ -89,7 +89,7 @@
             </div>
             <p>&nbsp&nbsp&nbsp</p>
             <div class="form-control">
-                <select @change="changeFilter($event)">
+                <select id="form-2" @change="changeFilter($event)">
                     <option value="" selected disabled>Region</option>
                     <option v-for="region in js_regions" :value="region.code" :key="region.code">{{ region.name }}
                     </option>
@@ -98,7 +98,7 @@
             </div>
             <p>&nbsp&nbsp&nbsp</p>
             <div class="form-control">
-                <select @change="changeFilter($event)">
+                <select id="form-3" @change="changeFilter($event)">
                     <option value="" selected disabled>Topic</option>
                     <option v-for="topic in js_topic" :value="topic.code" :key="topic.code">{{ topic.name }}</option>
                 </select>
@@ -106,7 +106,7 @@
             </div>
             <p>&nbsp&nbsp&nbsp</p>
             <div class="form-control">
-                <select @change="changeFilter($event)">
+                <select id="form-4"  @change="changeFilter($event)">
                     <option value="" selected disabled>Pandemic Phase</option>
                     <option v-for="phase in js_phase" :value="phase.code" :key="phase.code">{{ phase.name }}</option>
                 </select>
@@ -121,7 +121,9 @@
         <div class="count-entries">
             <p><span>Total number of projects in the repository: <b>{{indexData.length}}</b></span></p>
         </div>
-
+        <div id="filter-count" class="count-entries">
+            <p><span>Filtered projects: <b>{{filterData.length}}</b></span></p>
+        </div>
         <div class="project-list">
             <div class="no-project" v-if="!filterData.length">
                 Sorry no projects found for the filter criteria you selected!

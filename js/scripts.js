@@ -125,8 +125,15 @@ new Vue({
     },
     ResetItems() {
       self.filterData = self.indexData;
+      document.getElementById("filter-count").style.display = "none";
+      document.getElementById("form-1").selectedIndex = 0;
+      document.getElementById("form-2").selectedIndex = 0;
+      document.getElementById("form-3").selectedIndex = 0;
+      document.getElementById("form-4").selectedIndex = 0;
     },
     changeFilter(event) {
+
+      document.getElementById("filter-count").style.display = "block";
       var element = document.body.querySelectorAll("select");
       this.selectedScope = element[0].value;
       this.selectedRegion = element[1].value;
