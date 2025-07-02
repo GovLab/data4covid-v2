@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Slug Test</title>
+    <script>
+        window.DATA_PATH = './data/';
+        window.ASSET_PATH = './';
+    </script>
+</head>
+<body>
+    <h1>Slug Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        // Simulate the slug extraction logic
+        function testSlugExtraction() {
+            const results = document.getElementById('results');
+            
+            // Test URL parsing
+            const testUrl = 'http://localhost:8000/projects/covid-19-event-risk-assessment-planning-tool';
+            const urlParts = testUrl.split('/');
+            const extractedSlug = urlParts[urlParts.length - 1];
+            
+            results.innerHTML += `<p>Test URL: ${testUrl}</p>`;
+            results.innerHTML += `<p>Extracted slug: ${extractedSlug}</p>`;
+            
+            // Test data loading
+            fetch(window.DATA_PATH + 'projects-by-slug-local.json')
+                .then(response => response.json())
+                .then(data => {
+                    results.innerHTML += `<p>Total projects in data: ${Object.keys(data).length}</p>`;
+                    
+                    // Test if the slug exists
+                    if (data[extractedSlug]) {
+                        const project = data[extractedSlug];
+                        results.innerHTML += `<p>✓ Found project: ${project.title}</p>`;
+                        results.innerHTML += `<p>Description: ${project.description.substring(0, 100)}...</p>`;
+                        
+                        if (project.thumbnail && project.thumbnail.data && project.thumbnail.data.full_url) {
+                            results.innerHTML += `<p>Thumbnail: ${project.thumbnail.data.full_url}</p>`;
+                            
+                            // Test asset path fixing
+                            const originalUrl = project.thumbnail.data.full_url;
+                            if (originalUrl.startsWith('assets/')) {
+                                const fixedUrl = window.ASSET_PATH + originalUrl;
+                                results.innerHTML += `<p>Fixed URL: ${fixedUrl}</p>`;
+                            }
+                        }
+                    } else {
+                        results.innerHTML += `<p>✗ Project not found with slug: ${extractedSlug}</p>`;
+                        
+                        // Show some available slugs
+                        const availableSlugs = Object.keys(data).slice(0, 5);
+                        results.innerHTML += `<p>Available slugs (first 5): ${availableSlugs.join(', ')}</p>`;
+                    }
+                })
+                .catch(error => {
+                    results.innerHTML += `<p style="color: red;">Error: ${error.message}</p>`;
+                });
+        }
+        
+        testSlugExtraction();
+    </script>
+</body>
+</html> 

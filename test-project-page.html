@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Page Test</title>
+    <script src="https://unpkg.com/vue@2.0.3/dist/vue.js"></script>
+    <script>
+        window.DATA_PATH = './data/';
+        window.ASSET_PATH = './';
+    </script>
+</head>
+<body>
+    <div id="project-page">
+        <h1>Project Page Test</h1>
+        
+        <div v-if="filterData.length > 0">
+            <h2>{{filterData[0].title}}</h2>
+            <p>{{filterData[0].description}}</p>
+            <p>Date: {{dateShow(filterData[0].project_initiation_date)}}</p>
+            <p>Participants: {{filterData[0].participants}}</p>
+            
+            <div v-if="filterData[0].thumbnail && filterData[0].thumbnail.data && filterData[0].thumbnail.data.full_url">
+                <img :src="filterData[0].thumbnail.data.full_url" style="max-width: 200px;" />
+                <p>Thumbnail URL: {{filterData[0].thumbnail.data.full_url}}</p>
+            </div>
+            
+            <div v-if="filterData[0].long_description">
+                <h3>Long Description:</h3>
+                <p>{{filterData[0].long_description}}</p>
+            </div>
+        </div>
+        
+        <div v-else>
+            <p>Loading project data...</p>
+        </div>
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#project-page',
+            data() {
+                return {
+                    filterData: [],
+                    memberslug: 'covid-19-event-risk-assessment-planning-tool' // Test slug
+                }
+            },
+            created() {
+                this.fetchIndex();
+            },
+            methods: {
+                fetchIndex() {
+                    const self = this;
+                    console.log('Fetching data for slug:', self.memberslug);
+                    
+                    if (window.DATA_PATH) {
+                        const dataUrl = window.DATA_PATH + 'projects-by-slug-local.json';
+                        console.log('Loading from:', dataUrl);
+                        
+                        fetch(dataUrl)
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Loaded data, looking for slug:', self.memberslug);
+                                
+                                if (data[self.memberslug]) {
+                                    const project = data[self.memberslug];
+                                    
+                                    // Fix asset URLs for offline mode
+                                    if (window.ASSET_PATH && project.thumbnail && project.thumbnail.data && project.thumbnail.data.full_url) {
+                                        if (project.thumbnail.data.full_url.startsWith('assets/')) {
+                                            project.thumbnail.data.full_url = window.ASSET_PATH + project.thumbnail.data.full_url;
+                                        }
+                                    }
+                                    
+                                    self.filterData = [project];
+                                    console.log('✓ Project loaded successfully');
+                                } else {
+                                    console.log('✗ Project not found');
+                                    self.filterData = [];
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error loading data:', error);
+                            });
+                    }
+                },
+                dateShow(date) {
+                    if (!date) return '';
+                    return new Date(date).toLocaleDateString();
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

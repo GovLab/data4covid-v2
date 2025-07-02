@@ -90,7 +90,42 @@ new Vue({
   methods: {
 
     fetchIndex() {
+      self = this;
+      
+      // Try to load from local data first (offline mode)
+      if (window.DATA_PATH) {
+        fetch(window.DATA_PATH + 'projects-local.json')
+          .then(response => response.json())
+          .then(data => {
+            self.indexData = data.data;
+            // Most recently added first
+            self.indexData = self.indexData.sort(function(a, b){
+                return (b.id > a.id) ? 1 : -1;});
+            
+            // Fix asset URLs for offline mode
+            if (window.ASSET_PATH) {
+              self.indexData.forEach(project => {
+                if (project.thumbnail && project.thumbnail.data && project.thumbnail.data.full_url) {
+                  if (project.thumbnail.data.full_url.startsWith('assets/')) {
+                    project.thumbnail.data.full_url = window.ASSET_PATH + project.thumbnail.data.full_url;
+                  }
+                }
+              });
+            }
+            
+            self.filterData = self.indexData;
+            console.log('Loaded data from local JSON file');
+          })
+          .catch(error => {
+            console.log('Local data not available, trying API...');
+            this.fetchFromAPI();
+          });
+      } else {
+        this.fetchFromAPI();
+      }
+    },
 
+    fetchFromAPI() {
       self = this;
       const client = new DirectusSDK({
         url: "https://directus.thegovlab.com/",
