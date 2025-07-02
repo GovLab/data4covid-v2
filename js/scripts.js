@@ -78,7 +78,6 @@ new Vue({
       sortBy: 'name',
     sortDirection: 'ASC',
       selectedProjectType: null,
-      apiURL: 'https://directus.thegovlab.com/data4covid',
     }
   },
 
@@ -92,7 +91,7 @@ new Vue({
     fetchIndex() {
       self = this;
       
-      // Try to load from local data first (offline mode)
+      // Load from local data only (offline mode)
       if (window.DATA_PATH) {
         fetch(window.DATA_PATH + 'projects-local.json')
           .then(response => response.json())
@@ -114,41 +113,20 @@ new Vue({
             }
             
             self.filterData = self.indexData;
-            console.log('Loaded data from local JSON file');
+            console.log('Loaded data from local JSON file (offline mode)');
           })
           .catch(error => {
-            console.log('Local data not available, trying API...');
-            this.fetchFromAPI();
+            console.error('ERROR: Local data not available. This site requires offline data to function.');
+            console.error('Please ensure projects-local.json exists in the data directory.');
+            // Don't fall back to API - this is offline-only
           });
       } else {
-        this.fetchFromAPI();
+        console.error('ERROR: DATA_PATH not set. This site requires offline data to function.');
+        // Don't fall back to API - this is offline-only
       }
     },
 
-    fetchFromAPI() {
-      self = this;
-      const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
-        project: "data4covid",
-        storage: window.localStorage
-      });
 
-      client.getItems(
-        'projects',
-        {
-          fields: ['*.*']
-        }
-      ).then(data => {
-
-        self.indexData = data.data;
-   //Most recently added first
-        self.indexData = self.indexData.sort(function(a, b){
-            return (b.id > a.id) ? 1 : -1;});
-        
-        self.filterData = self.indexData;
-      })
-        .catch(error => console.error(error));
-    },
     dateShow(date) {
       return moment(date).format("MMMM YYYY");
     },

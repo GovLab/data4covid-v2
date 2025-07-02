@@ -29,7 +29,6 @@ new Vue({
  
     return {
       filterData: [],
-      apiURL: 'https://directus.thegovlab.com/data4covid',
     }
   },
 
@@ -50,7 +49,7 @@ new Vue({
       console.log('Fetching data for slug:', self.memberslug);
       console.log('DATA_PATH:', window.DATA_PATH);
       
-      // Try to load from local data first (offline mode)
+      // Load from local data only (offline mode)
       if (window.DATA_PATH) {
         const dataUrl = window.DATA_PATH + 'projects-by-slug-local.json';
         console.log('Loading from:', dataUrl);
@@ -73,44 +72,24 @@ new Vue({
               
               self.indexData = [project];
               self.filterData = self.indexData;
-              console.log('Loaded project from local JSON file');
+              console.log('Loaded project from local JSON file (offline mode)');
             } else {
-              console.log('Project not found in local data, trying API...');
-              this.fetchFromAPI();
+              console.error('ERROR: Project slug "' + self.memberslug + '" not found in local data.');
+              console.error('Available slugs:', Object.keys(data));
+              // Don't fall back to API - this is offline-only
             }
           })
           .catch(error => {
-            console.log('Local data not available, trying API...');
-            this.fetchFromAPI();
+            console.error('ERROR: Local data not available. This site requires offline data to function.');
+            console.error('Please ensure projects-by-slug-local.json exists in the data directory.');
+            // Don't fall back to API - this is offline-only
           });
       } else {
-        this.fetchFromAPI();
+        console.error('ERROR: DATA_PATH not set. This site requires offline data to function.');
+        // Don't fall back to API - this is offline-only
       }
     },
 
-    fetchFromAPI() {
-      self = this;
-      const client = new DirectusSDK({
-        url: "https://directus.thegovlab.com/",
-        project: "data4covid",
-        storage: window.localStorage
-      });
-
-      client.getItems(
-  'projects',
-  {
-    filter: {
-      slug: self.memberslug
-    },
-    fields: ['*.*']
-  }
-).then(data => {
-  
-  self.indexData = data.data;
-  self.filterData = self.indexData;
-})
-.catch(error => console.error(error));
-    },
     dateShow(date) {
       return moment(date).format("MMMM YYYY");
     },
