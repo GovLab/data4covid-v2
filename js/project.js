@@ -31,7 +31,6 @@ new Vue({
       filterData: [],
     }
   },
-
   created: function created() {
 
     this.memberslug=window.location.href.split('/');
